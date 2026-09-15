@@ -1,0 +1,159 @@
+@prefix sh:   <http://www.w3.org/ns/shacl#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix dm:   <http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#> .
+@prefix cim:  <http://www.semanticweb.org/rotter/interoperable-communication-data-model_cim#> .
+@prefix saref: <https://saref.etsi.org/core/> .
+@prefix s4ener: <https://saref.etsi.org/saref4ener/> .
+
+#################################################################
+# Shape 1: dm:hasMinTemperature < dm:hasMaxTemperature
+#
+# This is the constraint explicitly documented in the thesis (Section on the
+# Building domain axioms) as not expressible in OWL DL, since OWL has no
+# construct for comparing two datatype property values of the same
+# individual. SHACL's sh:lessThan is designed for exactly this case.
+#################################################################
+dm:ComfortProfileTemperatureShape
+    a sh:NodeShape ;
+    sh:targetClass dm:ComfortProfile ;
+    sh:property [
+        sh:path dm:hasMinTemperature ;
+        sh:lessThan dm:hasMaxTemperature ;
+        sh:datatype xsd:float ;
+        sh:maxCount 1 ;
+        sh:message "hasMinTemperature must be strictly less than hasMaxTemperature for this ComfortProfile." ;
+    ] .
+
+
+#################################################################
+# Shape 2: Stale (already-expired) manual overrides
+#
+# The thesis documents a third condition on dm:EffectivelyControllable,
+# that no active dm:ManualOverride exists, as not expressible in OWL DL,
+# since it requires a closed-world check over an individual's asserted
+# properties (and, here, a comparison against wall-clock time). No property
+# in the current data model links a device directly to the ComfortProfile
+# that governs the room it serves, so this shape cannot check "is this
+# specific device currently overridden" end-to-end. What it *can* and does
+# check, faithfully to the same underlying concept, is a data-hygiene
+# question: an override whose expiry has already passed should not still
+# be sitting in the graph as if it were live. This is exactly the kind of
+# time-dependent check OWL cannot express at all (there is no "current
+# time" in OWL DL), and SHACL-SPARQL can, via NOW().
+#################################################################
+dm:ManualOverrideExpiryShape
+    a sh:NodeShape ;
+    sh:targetClass dm:ManualOverride ;
+    sh:sparql [
+        a sh:SPARQLConstraint ;
+        sh:message "This ManualOverride's expiry is in the past; it should have been removed once it lapsed." ;
+        sh:prefixes <http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#> ;
+        sh:select """
+            PREFIX dm: <http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#>
+            PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+            SELECT $this
+            WHERE {
+                $this dm:hasOverrideExpiry ?expiry .
+                # NOW() returns a timezone-aware dateTime, but hasOverrideExpiry
+                # values in this ontology are timezone-naive; comparing the two
+                # directly raises a type error in Python's datetime comparison,
+                # which silently breaks the FILTER. Strip NOW()'s timezone
+                # suffix before comparing so both sides are naive dateTimes.
+                BIND (xsd:dateTime(REPLACE(STR(NOW()), "([+-]\\\\d{2}:\\\\d{2}|Z)$", "")) AS ?nowNaive)
+                FILTER (?expiry < ?nowNaive)
+            }
+        """ ;
+    ] .
+
+
+#################################################################
+# Shape 3: Physical plausibility: supply temperature above return
+# temperature for a thermal zone state
+#
+# Not an axiom the thesis text documents explicitly, but a straightforward
+# physical sanity check in the same spirit: a heating circuit that reports
+# a return temperature higher than its supply temperature indicates either
+# a sensor fault or a data-entry error, and is exactly the kind of
+# functional-completeness / plausibility check the methodology chapter
+# assigns to the SHACL validation layer.
+#################################################################
+dm:ThermalZoneStatePlausibilityShape
+    a sh:NodeShape ;
+    sh:targetClass dm:ThermalZoneState ;
+    sh:sparql [
+        a sh:SPARQLConstraint ;
+        sh:message "Supply temperature must be greater than return temperature." ;
+        sh:prefixes <http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#> ;
+        sh:select """
+            PREFIX dm: <http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#>
+            SELECT $this
+            WHERE {
+                $this dm:hasSupplyTemperature ?supply ;
+                      dm:hasReturnTemperature ?return .
+                FILTER (?supply <= ?return)
+            }
+        """ ;
+        # Implemented via sh:sparql rather than the native sh:greaterThan
+        # constraint component: testing confirmed sh:greaterThan silently
+        # does not evaluate at all in this pyshacl version (0.40.1), always
+        # reporting conformance regardless of the actual values, while the
+        # SPARQL-based equivalent works correctly. sh:lessThan (used in
+        # dm:ComfortProfileTemperatureShape above) was separately verified
+        # to work correctly, so this is specific to sh:greaterThan.
+    ] .
+
+
+#################################################################
+# Shape 4: Functional completeness: a Level-3 (controllable) device
+# should expose a setpoint
+#
+# Directly tied to the optimisation-implications analysis: dm:hasSetpoint
+# is the decision variable the solver dispatches to a Level-3 device each
+# cycle. A device asserted as Level3_Controllable but missing a setpoint
+# cannot actually be dispatched, so this is a functional-completeness gap
+# worth catching before the prototype's solver-integration code tries to
+# use it.
+#################################################################
+dm:Level3DeviceHasSetpointShape
+    a sh:NodeShape ;
+    sh:targetSubjectsOf dm:hasControllabilityLevel ;
+    # Targets any individual with a hasControllabilityLevel assertion,
+    # rather than sh:targetClass s4ener:Device: many relevant individuals
+    # (e.g. s4ener:Storage instances such as batteries) are only asserted
+    # as a *subclass* of s4ener:Device, and without RDFS/OWL inference
+    # enabled (deliberately, to keep validation offline: see the
+    # docstring in validate_ontology.py) a class-based target would miss
+    # them entirely.
+    sh:sparql [
+        a sh:SPARQLConstraint ;
+        sh:message "A device classified as Level3_Controllable must expose a setpoint (dm:hasSetpoint) to be dispatchable." ;
+        sh:select """
+            PREFIX dm: <http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#>
+            SELECT $this
+            WHERE {
+                $this dm:hasControllabilityLevel dm:Level3_Controllable .
+                FILTER NOT EXISTS { $this dm:hasSetpoint ?sp }
+            }
+        """ ;
+    ] .
+
+
+#################################################################
+# Shape 5: Plausible day-ahead price range
+#
+# Functional-completeness check on the grid-side price signal: EU day-ahead
+# electricity markets are capped (EUR -500 to EUR 4,000 per MWh under the
+# EU-wide harmonised maximum/minimum clearing price at the time of writing).
+# A dm:hasPrice value outside this range signals a data-ingestion error
+# upstream, not a real market condition.
+#################################################################
+dm:PlausiblePriceShape
+    a sh:NodeShape ;
+    sh:targetClass cim:Point ;
+    sh:property [
+        sh:path dm:hasPrice ;
+        sh:datatype xsd:float ;
+        sh:minInclusive -500.0 ;
+        sh:maxInclusive 4000.0 ;
+        sh:message "Day-ahead price is outside the EU-harmonised clearing price bounds (EUR -500 to EUR 4000 per MWh)." ;
+    ] .
