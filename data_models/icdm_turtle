@@ -1,0 +1,1029 @@
+@prefix : <http://www.semanticweb.org/rotter/interoperable-communication-data-model#> .
+@prefix dm: <http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#> .
+@prefix ex: <http://www.semanticweb.org/rotter/interoperable-communication-data-model_ex#> .
+@prefix cim: <http://www.semanticweb.org/rotter/interoperable-communication-data-model_cim#> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix saref: <https://saref.etsi.org/core/> .
+@prefix terms: <http://purl.org/dc/terms/> .
+@prefix onem2m: <http://www.owl-ontologies.com/oneM2M#> .
+@prefix s4bldg: <https://saref.etsi.org/saref4bldg/> .
+@prefix s4ener: <https://saref.etsi.org/saref4ener/> .
+@prefix s4grid: <https://saref.etsi.org/saref4grid/> .
+@prefix s4syst: <https://saref.etsi.org/saref4syst/> .
+@base <http://www.semanticweb.org/rotter/interoperable-communication-data-model#> .
+
+<http://www.semanticweb.org/rotter/interoperable-communication-data-model> rdf:type owl:Ontology ;
+                                                                            owl:imports <https://saref.etsi.org/core/v4.1.1/> ,
+                                                                                        <https://saref.etsi.org/saref4bldg/v2.1.1/> ,
+                                                                                        <https://saref.etsi.org/saref4ener/v2.1.1/> ,
+                                                                                        <https://saref.etsi.org/saref4grid/v2.1.1/> ;
+                                                                            terms:creator "Daniel Rotter"@en ;
+                                                                            terms:description "This ontology was created as part of the master thesis \"Design of an interoperable communication data model for higher-level control systems in energy management\"."@en ;
+                                                                            terms:title "Interoperable Communication Data Model (ICDM)"@en ;
+                                                                            owl:versionInfo "1.1" .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_cim#MarketDocument.TimeSeries
+cim:MarketDocument.TimeSeries rdf:type owl:ObjectProperty ;
+                              rdfs:domain cim:MarketDocument ;
+                              rdfs:range cim:TimeSeries .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_cim#Meter.UsagePoint
+cim:Meter.UsagePoint rdf:type owl:ObjectProperty ;
+                     rdfs:domain cim:Meter ;
+                     rdfs:range cim:UsagePoint .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_cim#MeterReading.Meter
+cim:MeterReading.Meter rdf:type owl:ObjectProperty ;
+                       rdfs:domain cim:MeterReading ;
+                       rdfs:range cim:Meter .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_cim#Terminal.ConductingEquipment
+cim:Terminal.ConductingEquipment rdf:type owl:ObjectProperty ;
+                                 rdfs:domain cim:Terminal ;
+                                 rdfs:range cim:ConductingEquipment .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_cim#Terminal.ConnectivityNode
+cim:Terminal.ConnectivityNode rdf:type owl:ObjectProperty ;
+                              rdfs:domain cim:Terminal ;
+                              rdfs:range cim:ConnectivityNode .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_cim#TimeSeries.Point
+cim:TimeSeries.Point rdf:type owl:ObjectProperty ;
+                     rdfs:domain cim:TimeSeries ;
+                     rdfs:range cim:Point .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#connectsTo
+dm:connectsTo rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf owl:topObjectProperty ;
+              rdfs:domain dm:ThermalGridConnection ;
+              rdfs:range dm:ThermalGrid .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#correspondsToDevice
+dm:correspondsToDevice rdf:type owl:ObjectProperty ;
+                       rdfs:subPropertyOf owl:topObjectProperty ;
+                       rdfs:domain cim:EndDevice ;
+                       rdfs:range saref:Device .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#hasAccessAddress
+dm:hasAccessAddress rdf:type owl:ObjectProperty ;
+                    rdfs:domain s4bldg:Building ;
+                    rdfs:range dm:AccessAddress .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#hasComfortProfile
+dm:hasComfortProfile rdf:type owl:ObjectProperty ;
+                     rdfs:domain s4bldg:BuildingSpace ;
+                     rdfs:range dm:ComfortProfile .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#hasControllabilityLevel
+dm:hasControllabilityLevel rdf:type owl:ObjectProperty ;
+                           rdfs:domain s4ener:Device ;
+                           rdfs:range dm:ControllabilityLevel .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#hasHotWaterSchedule
+dm:hasHotWaterSchedule rdf:type owl:ObjectProperty ;
+                       rdfs:domain dm:ThermalStorage ;
+                       rdfs:range dm:Schedule .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#hasLocation
+dm:hasLocation rdf:type owl:ObjectProperty ;
+               rdfs:domain s4bldg:Building ;
+               rdfs:range dm:Location .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#hasManualOverride
+dm:hasManualOverride rdf:type owl:ObjectProperty ;
+                     rdfs:domain dm:ComfortProfile ;
+                     rdfs:range dm:ManualOverride .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#hasOccupancyState
+dm:hasOccupancyState rdf:type owl:ObjectProperty ;
+                     rdfs:domain s4bldg:BuildingSpace ;
+                     rdfs:range dm:OccupancyState .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#hasOpenState
+dm:hasOpenState rdf:type owl:ObjectProperty ;
+                rdfs:domain s4bldg:BuildingObject ;
+                rdfs:range dm:OpenClosedState .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#hasOperationalState
+dm:hasOperationalState rdf:type owl:ObjectProperty ;
+                       rdfs:domain s4ener:Device ;
+                       rdfs:range dm:OperationalState .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#hasThermalMeter
+dm:hasThermalMeter rdf:type owl:ObjectProperty ;
+                   rdfs:domain dm:ThermalGridConnection ;
+                   rdfs:range dm:ThermalMeter .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#hasUnitAddress
+dm:hasUnitAddress rdf:type owl:ObjectProperty ;
+                  rdfs:domain s4bldg:BuildingSpace ;
+                  rdfs:range dm:UnitAddress .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#hasWeatherForecast
+dm:hasWeatherForecast rdf:type owl:ObjectProperty ;
+                      rdfs:domain s4bldg:Building ;
+                      rdfs:range dm:WeatherForecast .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#isStateOf
+dm:isStateOf rdf:type owl:ObjectProperty ;
+             rdfs:domain dm:ThermalZoneState .
+
+
+###  https://saref.etsi.org/core/hasFunction
+saref:hasFunction rdfs:domain saref:Device .
+
+
+###  https://saref.etsi.org/core/hasResult
+saref:hasResult rdfs:domain saref:Observation ;
+                rdfs:range saref:PropertyValue .
+
+
+###  https://saref.etsi.org/core/hasState
+saref:hasState rdfs:domain saref:Device .
+
+
+###  https://saref.etsi.org/core/madeExecution
+saref:madeExecution rdfs:domain saref:Sensor ;
+                    rdfs:range saref:Observation .
+
+
+###  https://saref.etsi.org/saref4bldg/contains
+s4bldg:contains rdfs:domain s4bldg:BuildingSpace .
+
+
+###  https://saref.etsi.org/saref4bldg/hasSpace
+s4bldg:hasSpace rdfs:domain s4bldg:BuildingSpace ;
+                rdfs:range s4bldg:BuildingSpace .
+
+
+###  https://saref.etsi.org/saref4bldg/isContainedIn
+s4bldg:isContainedIn rdfs:range s4bldg:BuildingSpace .
+
+
+###  https://saref.etsi.org/saref4ener/hasRecipient
+s4ener:hasRecipient rdfs:domain s4ener:FlexOffer ;
+                    rdfs:range [ rdf:type owl:Class ;
+                                 owl:unionOf ( <http://xmlns.com/foaf/0.1/Agent>
+                                               saref:Device
+                                             )
+                               ] .
+
+
+###  https://saref.etsi.org/saref4ener/includes
+s4ener:includes rdfs:domain s4ener:FlexOffer ;
+                rdfs:range s4ener:FlexibilityProfile .
+
+
+###  https://saref.etsi.org/saref4ener/producedBy
+s4ener:producedBy rdfs:domain s4ener:FlexOffer .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_cim#Analog.value
+cim:Analog.value rdf:type owl:DatatypeProperty ;
+                 rdfs:domain cim:Analog ;
+                 rdfs:range xsd:float .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_cim#ConformLoad.pfixed
+cim:ConformLoad.pfixed rdf:type owl:DatatypeProperty ;
+                       rdfs:domain cim:ConformLoad ;
+                       rdfs:range xsd:float .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#hasBuildingMass
+dm:hasBuildingMass rdf:type owl:DatatypeProperty ;
+                   rdfs:domain s4bldg:Building ;
+                   rdfs:range xsd:float .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#hasCarbonIntensity
+dm:hasCarbonIntensity rdf:type owl:DatatypeProperty ;
+                      rdfs:domain dm:CarbonIntensityForecast ;
+                      rdfs:range xsd:float .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#hasCloudCover
+dm:hasCloudCover rdf:type owl:DatatypeProperty ;
+                 rdfs:domain dm:WeatherForecast ;
+                 rdfs:range xsd:float .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#hasCoefficientOfPerformance
+dm:hasCoefficientOfPerformance rdf:type owl:DatatypeProperty ;
+                               rdfs:domain dm:HeatPump ;
+                               rdfs:range xsd:float .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#hasCongestionLevel
+dm:hasCongestionLevel rdf:type owl:DatatypeProperty ;
+                      rdfs:domain dm:CongestionPoint ;
+                      rdfs:range xsd:float .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#hasDepartureTime
+dm:hasDepartureTime rdf:type owl:DatatypeProperty ;
+                    rdfs:domain dm:ElectricVehicle ;
+                    rdfs:range xsd:dateTime .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#hasForecastTimestamp
+dm:hasForecastTimestamp rdf:type owl:DatatypeProperty ;
+                        rdfs:domain dm:WeatherForecast ;
+                        rdfs:range xsd:dateTime .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#hasHouseNumber
+dm:hasHouseNumber rdf:type owl:DatatypeProperty ;
+                  rdfs:domain dm:AccessAddress ;
+                  rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#hasInstallationDate
+dm:hasInstallationDate rdf:type owl:DatatypeProperty ;
+                       rdfs:domain dm:ThermalMeter ;
+                       rdfs:range xsd:dateTime .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#hasLatitude
+dm:hasLatitude rdf:type owl:DatatypeProperty ;
+               rdfs:domain dm:Location ;
+               rdfs:range xsd:double .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#hasLongitude
+dm:hasLongitude rdf:type owl:DatatypeProperty ;
+                rdfs:domain dm:Location ;
+                rdfs:range xsd:double .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#hasMaxTemperature
+dm:hasMaxTemperature rdf:type owl:DatatypeProperty ;
+                     rdfs:domain dm:ComfortProfile ;
+                     rdfs:range xsd:float .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#hasMinChargeLevel
+dm:hasMinChargeLevel rdf:type owl:DatatypeProperty ;
+                     rdfs:domain dm:ElectricVehicle ;
+                     rdfs:range xsd:float .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#hasMinTemperature
+dm:hasMinTemperature rdf:type owl:DatatypeProperty ;
+                     rdfs:domain dm:ComfortProfile ;
+                     rdfs:range xsd:float .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#hasMinimumPower
+dm:hasMinimumPower rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf owl:topDataProperty ;
+                   rdfs:domain s4ener:PowerProfile ;
+                   rdfs:range xsd:float .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#hasMinimumRunTime
+dm:hasMinimumRunTime rdf:type owl:DatatypeProperty ;
+                     rdfs:domain s4ener:PowerProfile ;
+                     rdfs:range xsd:float .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#hasMunicipalityCode
+dm:hasMunicipalityCode rdf:type owl:DatatypeProperty ;
+                       rdfs:domain dm:AccessAddress ;
+                       rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#hasNationalAddressRegisterId
+dm:hasNationalAddressRegisterId rdf:type owl:DatatypeProperty ;
+                                rdfs:domain dm:AccessAddress ;
+                                rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#hasOverrideExpiry
+dm:hasOverrideExpiry rdf:type owl:DatatypeProperty ;
+                     rdfs:domain dm:ManualOverride ;
+                     rdfs:range xsd:dateTime .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#hasOverrideValue
+dm:hasOverrideValue rdf:type owl:DatatypeProperty ;
+                    rdfs:domain dm:ManualOverride ;
+                    rdfs:range xsd:float .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#hasPostalCode
+dm:hasPostalCode rdf:type owl:DatatypeProperty ;
+                 rdfs:domain dm:AccessAddress ;
+                 rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#hasPrice
+dm:hasPrice rdf:type owl:DatatypeProperty ;
+            rdfs:domain cim:Point ;
+            rdfs:range xsd:float .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#hasQuantity
+dm:hasQuantity rdf:type owl:DatatypeProperty ;
+               rdfs:domain cim:Point ;
+               rdfs:range xsd:float .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#hasRampingTime
+dm:hasRampingTime rdf:type owl:DatatypeProperty ;
+                  rdfs:domain s4ener:PowerProfile ;
+                  rdfs:range xsd:float .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#hasRatedPower
+dm:hasRatedPower rdf:type owl:DatatypeProperty ;
+                 rdfs:domain s4ener:Device ;
+                 rdfs:range xsd:float .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#hasRemovalDate
+dm:hasRemovalDate rdf:type owl:DatatypeProperty ;
+                  rdfs:domain dm:ThermalMeter ;
+                  rdfs:range xsd:dateTime .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#hasReturnTemperature
+dm:hasReturnTemperature rdf:type owl:DatatypeProperty ;
+                        rdfs:domain dm:ThermalZoneState ;
+                        rdfs:range xsd:float .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#hasScheduledTemperature
+dm:hasScheduledTemperature rdf:type owl:DatatypeProperty ;
+                           rdfs:domain dm:Schedule ;
+                           rdfs:range xsd:float .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#hasScheduledTime
+dm:hasScheduledTime rdf:type owl:DatatypeProperty ;
+                    rdfs:domain dm:Schedule ;
+                    rdfs:range xsd:time .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#hasSetpoint
+dm:hasSetpoint rdf:type owl:DatatypeProperty ;
+               rdfs:subPropertyOf owl:topDataProperty ;
+               rdfs:domain s4ener:Device ;
+               rdfs:range xsd:float .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#hasShadingPosition
+dm:hasShadingPosition rdf:type owl:DatatypeProperty ;
+                      rdfs:domain s4bldg:ShadingDevice ;
+                      rdfs:range xsd:float .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#hasSolarIrradiance
+dm:hasSolarIrradiance rdf:type owl:DatatypeProperty ;
+                      rdfs:domain dm:WeatherForecast ;
+                      rdfs:range xsd:float .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#hasStateOfHealth
+dm:hasStateOfHealth rdf:type owl:DatatypeProperty ;
+                    rdfs:domain s4ener:Storage ;
+                    rdfs:range xsd:float .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#hasStreetName
+dm:hasStreetName rdf:type owl:DatatypeProperty ;
+                 rdfs:domain dm:AccessAddress ;
+                 rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#hasSupplyTemperature
+dm:hasSupplyTemperature rdf:type owl:DatatypeProperty ;
+                        rdfs:domain dm:ThermalZoneState ;
+                        rdfs:range xsd:float .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#hasTemperature
+dm:hasTemperature rdf:type owl:DatatypeProperty ;
+                  rdfs:domain dm:WeatherForecast ;
+                  rdfs:range xsd:float .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#hasThermalPrice
+dm:hasThermalPrice rdf:type owl:DatatypeProperty ;
+                   rdfs:domain dm:ThermalPriceSignal ;
+                   rdfs:range xsd:float .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#hasWindSpeed
+dm:hasWindSpeed rdf:type owl:DatatypeProperty ;
+                rdfs:domain dm:WeatherForecast ;
+                rdfs:range xsd:float .
+
+
+###  https://saref.etsi.org/core/hasValue
+saref:hasValue rdfs:domain saref:PropertyValue ;
+               rdfs:range xsd:float .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_cim#ACLineSegment
+cim:ACLineSegment rdf:type owl:Class ;
+                  rdfs:subClassOf cim:ConductingEquipment .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_cim#Analog
+cim:Analog rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_cim#Bay
+cim:Bay rdf:type owl:Class ;
+        owl:disjointWith cim:Feeder ,
+                         cim:Substation .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_cim#ConductingEquipment
+cim:ConductingEquipment rdf:type owl:Class ;
+                        rdfs:subClassOf cim:Equipment .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_cim#ConformLoad
+cim:ConformLoad rdf:type owl:Class ;
+                rdfs:subClassOf cim:EnergyConsumer .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_cim#ConnectivityNode
+cim:ConnectivityNode rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_cim#EndDevice
+cim:EndDevice rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_cim#EnergyConsumer
+cim:EnergyConsumer rdf:type owl:Class ;
+                   rdfs:subClassOf cim:ConductingEquipment .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_cim#EnergySource
+cim:EnergySource rdf:type owl:Class ;
+                 rdfs:subClassOf cim:ConductingEquipment .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_cim#Equipment
+cim:Equipment rdf:type owl:Class ;
+              rdfs:subClassOf cim:PowerSystemResource .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_cim#Feeder
+cim:Feeder rdf:type owl:Class ;
+           owl:disjointWith cim:Substation .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_cim#MarketDocument
+cim:MarketDocument rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_cim#Meter
+cim:Meter rdf:type owl:Class ;
+          rdfs:subClassOf [ rdf:type owl:Restriction ;
+                            owl:onProperty cim:Meter.UsagePoint ;
+                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                            owl:onClass cim:UsagePoint
+                          ] .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_cim#MeterReading
+cim:MeterReading rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_cim#Point
+cim:Point rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_cim#PowerSystemResource
+cim:PowerSystemResource rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_cim#PowerTransformer
+cim:PowerTransformer rdf:type owl:Class ;
+                     rdfs:subClassOf cim:ConductingEquipment .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_cim#Substation
+cim:Substation rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_cim#Terminal
+cim:Terminal rdf:type owl:Class ;
+             rdfs:subClassOf [ rdf:type owl:Restriction ;
+                               owl:onProperty cim:Terminal.ConductingEquipment ;
+                               owl:someValuesFrom cim:ConductingEquipment
+                             ] .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_cim#TimeSeries
+cim:TimeSeries rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_cim#UsagePoint
+cim:UsagePoint rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_cim#VoltageLevel
+cim:VoltageLevel rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#AccessAddress
+dm:AccessAddress rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#CarbonIntensityForecast
+dm:CarbonIntensityForecast rdf:type owl:Class ;
+                           rdfs:subClassOf cim:TimeSeries .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#ComfortProfile
+dm:ComfortProfile rdf:type owl:Class ;
+                  rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                    owl:onProperty dm:hasManualOverride ;
+                                    owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                    owl:onClass dm:ManualOverride
+                                  ] .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#CongestionPoint
+dm:CongestionPoint rdf:type owl:Class ;
+                   rdfs:subClassOf cim:ConductingEquipment .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#ControllabilityLevel
+dm:ControllabilityLevel rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#EffectivelyControllable
+dm:EffectivelyControllable rdf:type owl:Class ;
+                           owl:equivalentClass [ owl:intersectionOf ( s4ener:Device
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty dm:hasControllabilityLevel ;
+                                                                        owl:hasValue dm:Level3_Controllable
+                                                                      ]
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty dm:hasOperationalState ;
+                                                                        owl:hasValue dm:Working
+                                                                      ]
+                                                                    ) ;
+                                                 rdf:type owl:Class
+                                               ] .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#ElectricVehicle
+dm:ElectricVehicle rdf:type owl:Class ;
+                   rdfs:subClassOf s4ener:Device .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#GenerationForecast
+dm:GenerationForecast rdf:type owl:Class ;
+                      rdfs:subClassOf cim:TimeSeries .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#HeatPump
+dm:HeatPump rdf:type owl:Class ;
+            rdfs:subClassOf s4bldg:DistributionFlowDevice ,
+                            s4ener:Device ;
+            owl:disjointWith s4bldg:Burner .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#LoadForecast
+dm:LoadForecast rdf:type owl:Class ;
+                rdfs:subClassOf cim:TimeSeries .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#Location
+dm:Location rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#ManualOverride
+dm:ManualOverride rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#OccupancyState
+dm:OccupancyState rdf:type owl:Class ;
+                  rdfs:subClassOf saref:State .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#OpenClosedState
+dm:OpenClosedState rdf:type owl:Class ;
+                   rdfs:subClassOf saref:State .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#OperationalState
+dm:OperationalState rdf:type owl:Class ;
+                    rdfs:subClassOf saref:State .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#PVInverter
+dm:PVInverter rdf:type owl:Class ;
+              rdfs:subClassOf s4ener:Device .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#Schedule
+dm:Schedule rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#ThermalGrid
+dm:ThermalGrid rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#ThermalGridConnection
+dm:ThermalGridConnection rdf:type owl:Class ;
+                         rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                           owl:onProperty dm:connectsTo ;
+                                           owl:someValuesFrom dm:ThermalGrid
+                                         ] .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#ThermalMeter
+dm:ThermalMeter rdf:type owl:Class ;
+                rdfs:subClassOf saref:Sensor .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#ThermalPriceSignal
+dm:ThermalPriceSignal rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#ThermalStorage
+dm:ThermalStorage rdf:type owl:Class ;
+                  rdfs:subClassOf saref:Device ,
+                                  s4ener:Storage .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#ThermalZoneState
+dm:ThermalZoneState rdf:type owl:Class ;
+                    rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                      owl:onProperty dm:isStateOf ;
+                                      owl:someValuesFrom [ rdf:type owl:Class ;
+                                                           owl:unionOf ( dm:HeatPump
+                                                                         dm:ThermalGrid
+                                                                       )
+                                                         ]
+                                    ] .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#UnitAddress
+dm:UnitAddress rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#WeatherForecast
+dm:WeatherForecast rdf:type owl:Class .
+
+
+###  http://www.w3.org/2002/07/owl#Thing
+owl:Thing rdfs:subClassOf owl:Thing .
+
+
+###  https://saref.etsi.org/saref4ener/Storage
+s4ener:Storage rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                 owl:onProperty dm:hasStateOfHealth ;
+                                 owl:someValuesFrom [ rdf:type rdfs:Datatype ;
+                                                      owl:onDatatype xsd:float ;
+                                                      owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                                             ]
+                                                                             [ xsd:maxInclusive "100.0"^^xsd:float
+                                                                             ]
+                                                                           )
+                                                    ]
+                               ] .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#Closed
+dm:Closed rdf:type owl:NamedIndividual ,
+                   dm:OpenClosedState ;
+          owl:differentFrom dm:Open .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#Faulty
+dm:Faulty rdf:type owl:NamedIndividual ,
+                   dm:OperationalState ;
+          owl:differentFrom dm:Working .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#Level1_Unpredictable
+dm:Level1_Unpredictable rdf:type owl:NamedIndividual ,
+                                 dm:ControllabilityLevel .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#Level2_PredictableNotControllable
+dm:Level2_PredictableNotControllable rdf:type owl:NamedIndividual ,
+                                              dm:ControllabilityLevel .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#Level3_Controllable
+dm:Level3_Controllable rdf:type owl:NamedIndividual ,
+                                dm:ControllabilityLevel .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#Occupied
+dm:Occupied rdf:type owl:NamedIndividual ,
+                     dm:OccupancyState ;
+            owl:differentFrom dm:Unoccupied .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#Open
+dm:Open rdf:type owl:NamedIndividual ,
+                 dm:OpenClosedState .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#Unoccupied
+dm:Unoccupied rdf:type owl:NamedIndividual ,
+                       dm:OccupancyState .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#Working
+dm:Working rdf:type owl:NamedIndividual ,
+                    dm:OperationalState .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_ex#AccessAddress_FHJ
+ex:AccessAddress_FHJ rdf:type owl:NamedIndividual ,
+                              dm:AccessAddress ;
+                     dm:hasHouseNumber "11" ;
+                     dm:hasNationalAddressRegisterId "AT-ADRCD-7235738" ;
+                     dm:hasPostalCode "8020" ;
+                     dm:hasStreetName "Eggenberger Allee" .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_ex#Aggregator_North
+ex:Aggregator_North rdf:type owl:NamedIndividual ,
+                             <http://xmlns.com/foaf/0.1/Agent> .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_ex#Battery_Building07
+ex:Battery_Building07 rdf:type owl:NamedIndividual ,
+                               s4ener:Storage ;
+                      dm:hasControllabilityLevel dm:Level3_Controllable ;
+                      dm:hasOperationalState dm:Working ;
+                      s4ener:presentFillLevel ex:Battery_FillLevel ;
+                      dm:hasRatedPower "5.0"^^xsd:float ;
+                      dm:hasSetpoint "3.2"^^xsd:float ;
+                      dm:hasStateOfHealth "96.2"^^xsd:float .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_ex#Battery_FillLevel
+ex:Battery_FillLevel rdf:type owl:NamedIndividual ,
+                              saref:PropertyValue ;
+                     saref:hasValue "74.0"^^xsd:float .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_ex#Battery_FlexOffer_20260810
+ex:Battery_FlexOffer_20260810 rdf:type owl:NamedIndividual ,
+                                       s4ener:FlexOffer ;
+                              s4ener:hasRecipient ex:Aggregator_North ;
+                              s4ener:includes ex:Battery_FlexibilityProfile ;
+                              s4ener:producedBy ex:Battery_Building07 .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_ex#Battery_FlexibilityProfile
+ex:Battery_FlexibilityProfile rdf:type owl:NamedIndividual ,
+                                       s4ener:FlexibilityProfile .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_ex#Building07
+ex:Building07 rdf:type owl:NamedIndividual ,
+                       s4bldg:Building ;
+              dm:hasAccessAddress ex:AccessAddress_FHJ ;
+              dm:hasWeatherForecast ex:WeatherForecast_20260810_0800 ;
+              dm:hasBuildingMass "185.4"^^xsd:float .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_ex#Connection_Building07
+ex:Connection_Building07 rdf:type owl:NamedIndividual ,
+                                  dm:ThermalGridConnection ;
+                         dm:connectsTo ex:DistrictHeatingNetwork_North ;
+                         dm:hasThermalMeter ex:HeatMeter_Building07 .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_ex#DayAheadPrice_20260810
+ex:DayAheadPrice_20260810 rdf:type owl:NamedIndividual ,
+                                   cim:MarketDocument ;
+                          cim:MarketDocument.TimeSeries ex:PriceTimeSeries_20260810 .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_ex#DistrictHeatingNetwork_North
+ex:DistrictHeatingNetwork_North rdf:type owl:NamedIndividual ,
+                                         dm:ThermalGrid .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_ex#EV_Faulty_Charger
+ex:EV_Faulty_Charger rdf:type owl:NamedIndividual ,
+                              s4ener:Device ;
+                     dm:hasControllabilityLevel dm:Level3_Controllable ;
+                     dm:hasOperationalState dm:Faulty ;
+                     dm:hasSetpoint "0.0"^^xsd:float .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_ex#EV_Household01
+ex:EV_Household01 rdf:type owl:NamedIndividual ,
+                           dm:ElectricVehicle ;
+                  dm:hasDepartureTime "2026-08-10T07:30:00"^^xsd:dateTime ;
+                  dm:hasMinChargeLevel "80.0"^^xsd:float .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_ex#Feeder_12
+ex:Feeder_12 rdf:type owl:NamedIndividual ,
+                      cim:Feeder .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_ex#HeatMeter_Building07
+ex:HeatMeter_Building07 rdf:type owl:NamedIndividual ,
+                                 dm:ThermalMeter ;
+                        dm:hasInstallationDate "2021-03-15T00:00:00"^^xsd:dateTime .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_ex#HeatPump_Building07
+ex:HeatPump_Building07 rdf:type owl:NamedIndividual ,
+                                dm:HeatPump ;
+                       dm:hasControllabilityLevel dm:Level3_Controllable ;
+                       dm:hasOperationalState dm:Working ;
+                       saref:hasFunction ex:HeatingFunction ;
+                       saref:hasProfile ex:HeatPump_PowerProfile ;
+                       dm:hasCoefficientOfPerformance "3.4"^^xsd:float ;
+                       dm:hasRatedPower "3.2"^^xsd:float ;
+                       dm:hasSetpoint "45.0"^^xsd:float .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_ex#HeatPump_PowerProfile
+ex:HeatPump_PowerProfile rdf:type owl:NamedIndividual ,
+                                  s4ener:PowerProfile ;
+                         dm:hasMinimumPower "0.5"^^xsd:float ;
+                         dm:hasMinimumRunTime "15.0"^^xsd:float ;
+                         dm:hasRampingTime "2.0"^^xsd:float .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_ex#HeatingFunction
+ex:HeatingFunction rdf:type owl:NamedIndividual ,
+                            saref:Function .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_ex#HotWaterTank_Building07
+ex:HotWaterTank_Building07 rdf:type owl:NamedIndividual ,
+                                    dm:ThermalStorage ;
+                           dm:hasHotWaterSchedule ex:MorningHotWater ;
+                           s4ener:presentFillLevel ex:HotWaterTank_FillLevel .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_ex#HotWaterTank_FillLevel
+ex:HotWaterTank_FillLevel rdf:type owl:NamedIndividual ,
+                                   saref:PropertyValue ;
+                          saref:hasValue "62.0"^^xsd:float .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_ex#LivingRoom
+ex:LivingRoom rdf:type owl:NamedIndividual ,
+                       s4bldg:BuildingSpace ;
+              dm:hasComfortProfile ex:LivingRoomComfort ;
+              dm:hasOccupancyState dm:Occupied ;
+              s4bldg:isContainedIn ex:Building07 .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_ex#LivingRoomComfort
+ex:LivingRoomComfort rdf:type owl:NamedIndividual ,
+                              dm:ComfortProfile ;
+                     dm:hasManualOverride ex:Override_20260810 ;
+                     dm:hasMaxTemperature "23.0"^^xsd:float ;
+                     dm:hasMinTemperature "20.0"^^xsd:float .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_ex#MorningHotWater
+ex:MorningHotWater rdf:type owl:NamedIndividual ,
+                            dm:Schedule ;
+                   dm:hasScheduledTemperature "55.0"^^xsd:float ;
+                   dm:hasScheduledTime "06:30:00"^^xsd:time .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_ex#Override_20260810
+ex:Override_20260810 rdf:type owl:NamedIndividual ,
+                              dm:ManualOverride ;
+                     dm:hasOverrideExpiry "2026-08-10T22:00:00"^^xsd:dateTime ;
+                     dm:hasOverrideValue "24.0"^^xsd:float .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_ex#PVInverter_Building07
+ex:PVInverter_Building07 rdf:type owl:NamedIndividual ,
+                                  dm:PVInverter ;
+                         dm:hasControllabilityLevel dm:Level2_PredictableNotControllable .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_ex#PricePoint_0800
+ex:PricePoint_0800 rdf:type owl:NamedIndividual ,
+                            cim:Point ;
+                   dm:hasPrice "84.3"^^xsd:float .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_ex#PriceTimeSeries_20260810
+ex:PriceTimeSeries_20260810 rdf:type owl:NamedIndividual ,
+                                     cim:TimeSeries ;
+                            cim:TimeSeries.Point ex:PricePoint_0800 .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_ex#SmartMeter_HI0042
+ex:SmartMeter_HI0042 rdf:type owl:NamedIndividual ,
+                              cim:Meter ,
+                              s4grid:GridMeter ;
+                     cim:Meter.UsagePoint ex:UsagePoint_HI0042 ;
+                     dm:correspondsToDevice ex:SmartMeter_HI0042_saref .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_ex#SmartMeter_HI0042_saref
+ex:SmartMeter_HI0042_saref rdf:type owl:NamedIndividual ,
+                                    saref:Device .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_ex#Transformer_A1
+ex:Transformer_A1 rdf:type owl:NamedIndividual ,
+                           cim:PowerTransformer ;
+                  dm:hasCongestionLevel "87.3"^^xsd:float .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_ex#UsagePoint_HI0042
+ex:UsagePoint_HI0042 rdf:type owl:NamedIndividual ,
+                              cim:UsagePoint .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_ex#WeatherForecast_20260810_0800
+ex:WeatherForecast_20260810_0800 rdf:type owl:NamedIndividual ,
+                                          dm:WeatherForecast ;
+                                 dm:hasForecastTimestamp "2026-08-10T08:00:00"^^xsd:dateTime ;
+                                 dm:hasSolarIrradiance "420.0"^^xsd:float ;
+                                 dm:hasTemperature "18.5"^^xsd:float .
+
+
+###  http://www.semanticweb.org/rotter/interoperable-communication-data-model_ex#Window_LivingRoom
+ex:Window_LivingRoom rdf:type owl:NamedIndividual ,
+                              s4bldg:BuildingObject ;
+                     dm:hasOpenState dm:Closed ;
+                     s4bldg:isContainedIn ex:LivingRoom .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( dm:CarbonIntensityForecast
+                dm:GenerationForecast
+                dm:LoadForecast
+              )
+] .
+
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( dm:Level1_Unpredictable
+                        dm:Level2_PredictableNotControllable
+                        dm:Level3_Controllable
+                      )
+] .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
