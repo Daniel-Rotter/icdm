@@ -1,0 +1,395 @@
+@prefix ex:   <http://www.semanticweb.org/rotter/interoperable-communication-data-model_ex#> .
+@prefix dm:   <http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#> .
+@prefix cim:  <http://www.semanticweb.org/rotter/interoperable-communication-data-model_cim#> .
+@prefix saref: <https://saref.etsi.org/core/> .
+@prefix s4ener: <https://saref.etsi.org/saref4ener/> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+
+ex:PriceTimeSeries_20260811 rdf:type cim:TimeSeries .
+
+ex:PricePoint_20260811_0000 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "61.4"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_0000 .
+
+ex:PricePoint_20260811_0015 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "55.3"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_0015 .
+
+ex:PricePoint_20260811_0030 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "57.8"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_0030 .
+
+ex:PricePoint_20260811_0045 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "57.2"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_0045 .
+
+ex:PricePoint_20260811_0100 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "62.4"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_0100 .
+
+ex:PricePoint_20260811_0115 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "61.8"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_0115 .
+
+ex:PricePoint_20260811_0130 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "63.9"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_0130 .
+
+ex:PricePoint_20260811_0145 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "55.9"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_0145 .
+
+ex:PricePoint_20260811_0200 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "59.2"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_0200 .
+
+ex:PricePoint_20260811_0215 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "55.3"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_0215 .
+
+ex:PricePoint_20260811_0230 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "57.2"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_0230 .
+
+ex:PricePoint_20260811_0245 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "60.1"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_0245 .
+
+ex:PricePoint_20260811_0300 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "55.3"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_0300 .
+
+ex:PricePoint_20260811_0315 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "57.0"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_0315 .
+
+ex:PricePoint_20260811_0330 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "61.5"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_0330 .
+
+ex:PricePoint_20260811_0345 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "60.4"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_0345 .
+
+ex:PricePoint_20260811_0400 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "57.2"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_0400 .
+
+ex:PricePoint_20260811_0415 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "60.9"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_0415 .
+
+ex:PricePoint_20260811_0430 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "63.1"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_0430 .
+
+ex:PricePoint_20260811_0445 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "55.1"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_0445 .
+
+ex:PricePoint_20260811_0500 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "63.1"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_0500 .
+
+ex:PricePoint_20260811_0515 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "62.0"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_0515 .
+
+ex:PricePoint_20260811_0530 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "58.4"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_0530 .
+
+ex:PricePoint_20260811_0545 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "56.6"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_0545 .
+
+ex:PricePoint_20260811_0600 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "77.9"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_0600 .
+
+ex:PricePoint_20260811_0615 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "71.7"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_0615 .
+
+ex:PricePoint_20260811_0630 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "69.3"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_0630 .
+
+ex:PricePoint_20260811_0645 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "69.3"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_0645 .
+
+ex:PricePoint_20260811_0700 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "90.1"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_0700 .
+
+ex:PricePoint_20260811_0715 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "87.7"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_0715 .
+
+ex:PricePoint_20260811_0730 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "89.7"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_0730 .
+
+ex:PricePoint_20260811_0745 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "89.0"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_0745 .
+
+ex:PricePoint_20260811_0800 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "100.4"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_0800 .
+
+ex:PricePoint_20260811_0815 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "104.7"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_0815 .
+
+ex:PricePoint_20260811_0830 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "98.8"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_0830 .
+
+ex:PricePoint_20260811_0845 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "100.5"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_0845 .
+
+ex:PricePoint_20260811_0900 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "90.0"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_0900 .
+
+ex:PricePoint_20260811_0915 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "87.9"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_0915 .
+
+ex:PricePoint_20260811_0930 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "90.3"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_0930 .
+
+ex:PricePoint_20260811_0945 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "87.4"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_0945 .
+
+ex:PricePoint_20260811_1000 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "75.4"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_1000 .
+
+ex:PricePoint_20260811_1015 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "68.8"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_1015 .
+
+ex:PricePoint_20260811_1030 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "70.6"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_1030 .
+
+ex:PricePoint_20260811_1045 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "71.2"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_1045 .
+
+ex:PricePoint_20260811_1100 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "55.8"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_1100 .
+
+ex:PricePoint_20260811_1115 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "57.3"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_1115 .
+
+ex:PricePoint_20260811_1130 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "56.0"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_1130 .
+
+ex:PricePoint_20260811_1145 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "57.8"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_1145 .
+
+ex:PricePoint_20260811_1200 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "61.4"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_1200 .
+
+ex:PricePoint_20260811_1215 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "58.6"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_1215 .
+
+ex:PricePoint_20260811_1230 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "58.7"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_1230 .
+
+ex:PricePoint_20260811_1245 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "57.1"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_1245 .
+
+ex:PricePoint_20260811_1300 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "57.7"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_1300 .
+
+ex:PricePoint_20260811_1315 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "64.4"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_1315 .
+
+ex:PricePoint_20260811_1330 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "61.5"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_1330 .
+
+ex:PricePoint_20260811_1345 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "61.1"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_1345 .
+
+ex:PricePoint_20260811_1400 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "56.7"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_1400 .
+
+ex:PricePoint_20260811_1415 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "62.3"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_1415 .
+
+ex:PricePoint_20260811_1430 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "56.6"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_1430 .
+
+ex:PricePoint_20260811_1445 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "58.8"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_1445 .
+
+ex:PricePoint_20260811_1500 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "5500.0"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_1500 .
+
+ex:PricePoint_20260811_1515 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "61.4"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_1515 .
+
+ex:PricePoint_20260811_1530 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "60.6"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_1530 .
+
+ex:PricePoint_20260811_1545 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "61.8"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_1545 .
+
+ex:PricePoint_20260811_1600 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "63.4"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_1600 .
+
+ex:PricePoint_20260811_1615 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "62.8"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_1615 .
+
+ex:PricePoint_20260811_1630 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "57.3"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_1630 .
+
+ex:PricePoint_20260811_1645 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "55.3"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_1645 .
+
+ex:PricePoint_20260811_1700 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "76.5"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_1700 .
+
+ex:PricePoint_20260811_1715 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "76.0"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_1715 .
+
+ex:PricePoint_20260811_1730 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "75.4"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_1730 .
+
+ex:PricePoint_20260811_1745 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "82.8"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_1745 .
+
+ex:PricePoint_20260811_1800 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "100.4"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_1800 .
+
+ex:PricePoint_20260811_1815 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "94.8"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_1815 .
+
+ex:PricePoint_20260811_1830 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "98.2"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_1830 .
+
+ex:PricePoint_20260811_1845 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "95.6"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_1845 .
+
+ex:PricePoint_20260811_1900 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "119.1"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_1900 .
+
+ex:PricePoint_20260811_1915 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "114.6"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_1915 .
+
+ex:PricePoint_20260811_1930 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "112.6"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_1930 .
+
+ex:PricePoint_20260811_1945 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "112.5"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_1945 .
+
+ex:PricePoint_20260811_2000 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "97.3"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_2000 .
+
+ex:PricePoint_20260811_2015 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "94.3"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_2015 .
+
+ex:PricePoint_20260811_2030 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "97.5"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_2030 .
+
+ex:PricePoint_20260811_2045 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "100.6"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_2045 .
+
+ex:PricePoint_20260811_2100 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "77.3"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_2100 .
+
+ex:PricePoint_20260811_2115 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "75.5"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_2115 .
+
+ex:PricePoint_20260811_2130 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "83.3"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_2130 .
+
+ex:PricePoint_20260811_2145 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "78.4"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_2145 .
+
+ex:PricePoint_20260811_2200 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "55.9"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_2200 .
+
+ex:PricePoint_20260811_2215 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "55.5"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_2215 .
+
+ex:PricePoint_20260811_2230 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "56.1"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_2230 .
+
+ex:PricePoint_20260811_2245 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "61.3"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_2245 .
+
+ex:PricePoint_20260811_2300 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "62.9"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_2300 .
+
+ex:PricePoint_20260811_2315 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "59.2"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_2315 .
+
+ex:PricePoint_20260811_2330 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "55.6"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_2330 .
+
+ex:PricePoint_20260811_2345 rdf:type owl:NamedIndividual, cim:Point ;
+    dm:hasPrice "58.8"^^xsd:float .
+ex:PriceTimeSeries_20260811 cim:TimeSeries.Point ex:PricePoint_20260811_2345 .

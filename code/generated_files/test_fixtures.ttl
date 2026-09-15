@@ -1,0 +1,28 @@
+@prefix ex:   <http://www.semanticweb.org/rotter/interoperable-communication-data-model_ex#> .
+@prefix dm:   <http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#> .
+@prefix cim:  <http://www.semanticweb.org/rotter/interoperable-communication-data-model_cim#> .
+@prefix saref: <https://saref.etsi.org/core/> .
+@prefix s4ener: <https://saref.etsi.org/saref4ener/> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+
+### A currently-active override (expiry far in the future), should NOT
+### be flagged by dm:ManualOverrideExpiryShape.
+ex:Override_Future_Valid rdf:type owl:NamedIndividual, dm:ManualOverride ;
+    dm:hasOverrideValue "22.0"^^xsd:float ;
+    dm:hasOverrideExpiry "2027-03-01T11:15:05"^^xsd:dateTime .
+
+### A Level-3 controllable device with no setpoint, SHOULD be flagged by
+### dm:Level3DeviceHasSetpointShape, since it cannot actually be dispatched.
+ex:Battery_NoSetpoint_Broken rdf:type owl:NamedIndividual, s4ener:Storage ;
+    dm:hasControllabilityLevel dm:Level3_Controllable .
+
+### A thermal zone state with return temperature above supply temperature,
+### physically implausible, SHOULD be flagged by
+### dm:ThermalZoneStatePlausibilityShape.
+ex:ThermalZoneState_Faulty_Sensor rdf:type owl:NamedIndividual, dm:ThermalZoneState ;
+    dm:hasSupplyTemperature "45.0"^^xsd:float ;
+    dm:hasReturnTemperature "52.0"^^xsd:float ;
+    dm:isStateOf ex:DistrictHeatingNetwork_North .

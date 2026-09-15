@@ -1,0 +1,1762 @@
+@prefix cim: <http://www.semanticweb.org/rotter/interoperable-communication-data-model_cim#> .
+@prefix dm: <http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#> .
+@prefix err: <http://www.daml.org/2002/03/agents/agent-ont#> .
+@prefix ex: <http://www.semanticweb.org/rotter/interoperable-communication-data-model_ex#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix s4bldg: <https://saref.etsi.org/saref4bldg/> .
+@prefix s4ener: <https://saref.etsi.org/saref4ener/> .
+@prefix s4grid: <https://saref.etsi.org/saref4grid/> .
+@prefix saref: <https://saref.etsi.org/core/> .
+@prefix terms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+terms:creator owl:sameAs terms:creator .
+
+terms:description owl:sameAs terms:description .
+
+terms:title owl:sameAs terms:title .
+
+<http://www.semanticweb.org/rotter/interoperable-communication-data-model> a owl:Ontology ;
+    terms:creator "Daniel Rotter"@en ;
+    terms:description "This ontology was created as part of the master thesis \"Design of an interoperable communication data model for higher-level control systems in energy management\"."@en ;
+    terms:title "Interoperable Communication Data Model (ICDM)"@en ;
+    owl:imports <https://saref.etsi.org/core/v4.1.1/>,
+        <https://saref.etsi.org/saref4bldg/v2.1.1/>,
+        <https://saref.etsi.org/saref4ener/v2.1.1/>,
+        <https://saref.etsi.org/saref4grid/v2.1.1/> ;
+    owl:sameAs <http://www.semanticweb.org/rotter/interoperable-communication-data-model> ;
+    owl:versionInfo "1.1" .
+
+ex:Battery_FlexOffer_20260810 a owl:NamedIndividual,
+        s4ener:FlexOffer ;
+    owl:sameAs ex:Battery_FlexOffer_20260810 ;
+    s4ener:hasRecipient ex:Aggregator_North ;
+    s4ener:includes ex:Battery_FlexibilityProfile ;
+    s4ener:producedBy ex:Battery_Building07 .
+
+ex:Connection_Building07 a _:n99f6e98aa6ff40d8842e44a1b7d73aa8b13,
+        dm:ThermalGridConnection,
+        owl:NamedIndividual,
+        owl:Thing ;
+    dm:connectsTo ex:DistrictHeatingNetwork_North ;
+    dm:hasThermalMeter ex:HeatMeter_Building07 ;
+    owl:sameAs ex:Connection_Building07 ;
+    owl:topObjectProperty ex:DistrictHeatingNetwork_North .
+
+ex:DayAheadPrice_20260810 a cim:MarketDocument,
+        owl:NamedIndividual,
+        owl:Thing ;
+    cim:MarketDocument.TimeSeries ex:PriceTimeSeries_20260810 ;
+    owl:sameAs ex:DayAheadPrice_20260810 .
+
+ex:EV_Faulty_Charger a _:n99f6e98aa6ff40d8842e44a1b7d73aa8b8,
+        owl:NamedIndividual,
+        s4ener:Device ;
+    dm:hasControllabilityLevel dm:Level3_Controllable ;
+    dm:hasOperationalState dm:Faulty ;
+    dm:hasSetpoint "0.0"^^xsd:float ;
+    owl:sameAs ex:EV_Faulty_Charger ;
+    owl:topDataProperty "0.0"^^xsd:float .
+
+ex:EV_Household01 a dm:ElectricVehicle,
+        owl:NamedIndividual,
+        owl:Thing,
+        s4ener:Device ;
+    dm:hasDepartureTime "2026-08-10T07:30:00"^^xsd:dateTime ;
+    dm:hasMinChargeLevel "80.0"^^xsd:float ;
+    owl:sameAs ex:EV_Household01 .
+
+ex:Feeder_12 a cim:Feeder,
+        owl:NamedIndividual,
+        owl:Thing ;
+    owl:sameAs ex:Feeder_12 .
+
+ex:HeatPump_Building07 a _:n99f6e98aa6ff40d8842e44a1b7d73aa8b1,
+        _:n99f6e98aa6ff40d8842e44a1b7d73aa8b15,
+        _:n99f6e98aa6ff40d8842e44a1b7d73aa8b7,
+        _:n99f6e98aa6ff40d8842e44a1b7d73aa8b8,
+        _:n99f6e98aa6ff40d8842e44a1b7d73aa8b9,
+        dm:EffectivelyControllable,
+        dm:HeatPump,
+        owl:NamedIndividual,
+        owl:Thing,
+        saref:Device,
+        s4bldg:DistributionFlowDevice,
+        s4ener:Device ;
+    dm:hasCoefficientOfPerformance "3.4"^^xsd:float ;
+    dm:hasControllabilityLevel dm:Level3_Controllable ;
+    dm:hasOperationalState dm:Working ;
+    dm:hasRatedPower "3.2"^^xsd:float ;
+    dm:hasSetpoint "45.0"^^xsd:float ;
+    owl:sameAs ex:HeatPump_Building07 ;
+    owl:topDataProperty "45.0"^^xsd:float ;
+    saref:hasFunction ex:HeatingFunction ;
+    saref:hasProfile ex:HeatPump_PowerProfile .
+
+ex:HotWaterTank_Building07 a _:n99f6e98aa6ff40d8842e44a1b7d73aa8b1,
+        _:n99f6e98aa6ff40d8842e44a1b7d73aa8b18,
+        dm:ThermalStorage,
+        owl:NamedIndividual,
+        owl:Thing,
+        saref:Device,
+        s4ener:Storage ;
+    dm:hasHotWaterSchedule ex:MorningHotWater ;
+    owl:sameAs ex:HotWaterTank_Building07 ;
+    s4ener:presentFillLevel ex:HotWaterTank_FillLevel .
+
+ex:PVInverter_Building07 a dm:PVInverter,
+        owl:NamedIndividual,
+        owl:Thing,
+        s4ener:Device ;
+    dm:hasControllabilityLevel dm:Level2_PredictableNotControllable ;
+    owl:sameAs ex:PVInverter_Building07 .
+
+ex:SmartMeter_HI0042 a _:n99f6e98aa6ff40d8842e44a1b7d73aa8b4,
+        cim:EndDevice,
+        cim:Meter,
+        owl:NamedIndividual,
+        owl:Thing,
+        s4grid:GridMeter ;
+    cim:Meter.UsagePoint ex:UsagePoint_HI0042 ;
+    dm:correspondsToDevice ex:SmartMeter_HI0042_saref ;
+    owl:sameAs ex:SmartMeter_HI0042 ;
+    owl:topObjectProperty ex:SmartMeter_HI0042_saref .
+
+ex:Transformer_A1 a cim:ConductingEquipment,
+        cim:Equipment,
+        cim:PowerSystemResource,
+        cim:PowerTransformer,
+        dm:CongestionPoint,
+        owl:NamedIndividual,
+        owl:Thing ;
+    dm:hasCongestionLevel "87.3"^^xsd:float ;
+    owl:sameAs ex:Transformer_A1 .
+
+ex:Window_LivingRoom a owl:NamedIndividual,
+        s4bldg:BuildingObject ;
+    dm:hasOpenState dm:Closed ;
+    owl:sameAs ex:Window_LivingRoom ;
+    s4bldg:isContainedIn ex:LivingRoom .
+
+rdf:HTML a rdfs:Datatype ;
+    owl:sameAs rdf:HTML .
+
+rdf:PlainLiteral a rdfs:Datatype ;
+    owl:sameAs rdf:PlainLiteral .
+
+rdf:XMLLiteral a rdfs:Datatype ;
+    owl:sameAs rdf:XMLLiteral .
+
+rdf:first owl:sameAs rdf:first .
+
+rdf:langString a rdfs:Datatype ;
+    owl:sameAs rdf:langString .
+
+rdf:rest owl:sameAs rdf:rest .
+
+rdf:type owl:sameAs rdf:type .
+
+rdfs:Literal a rdfs:Datatype ;
+    owl:sameAs rdfs:Literal .
+
+rdfs:comment a owl:AnnotationProperty ;
+    owl:sameAs rdfs:comment .
+
+rdfs:domain owl:sameAs rdfs:domain .
+
+rdfs:isDefinedBy a owl:AnnotationProperty ;
+    owl:sameAs rdfs:isDefinedBy .
+
+rdfs:label a owl:AnnotationProperty ;
+    owl:sameAs rdfs:label .
+
+rdfs:range owl:sameAs rdfs:range .
+
+rdfs:seeAlso a owl:AnnotationProperty ;
+    owl:sameAs rdfs:seeAlso .
+
+rdfs:subClassOf owl:sameAs rdfs:subClassOf .
+
+rdfs:subPropertyOf owl:sameAs rdfs:subPropertyOf .
+
+xsd:NCName a rdfs:Datatype ;
+    owl:sameAs xsd:NCName .
+
+xsd:NMTOKEN a rdfs:Datatype ;
+    owl:sameAs xsd:NMTOKEN .
+
+xsd:Name a rdfs:Datatype ;
+    owl:sameAs xsd:Name .
+
+xsd:anyURI a rdfs:Datatype ;
+    owl:sameAs xsd:anyURI .
+
+xsd:base64Binary a rdfs:Datatype ;
+    owl:sameAs xsd:base64Binary .
+
+xsd:boolean a rdfs:Datatype ;
+    owl:sameAs xsd:boolean .
+
+xsd:byte a rdfs:Datatype ;
+    owl:sameAs xsd:byte .
+
+xsd:date a rdfs:Datatype ;
+    owl:sameAs xsd:date .
+
+xsd:dateTimeStamp a rdfs:Datatype ;
+    owl:sameAs xsd:dateTimeStamp .
+
+xsd:hexBinary a rdfs:Datatype ;
+    owl:sameAs xsd:hexBinary .
+
+xsd:int a rdfs:Datatype ;
+    owl:sameAs xsd:int .
+
+xsd:integer a rdfs:Datatype ;
+    owl:sameAs xsd:integer .
+
+xsd:language a rdfs:Datatype ;
+    owl:sameAs xsd:language .
+
+xsd:long a rdfs:Datatype ;
+    owl:sameAs xsd:long .
+
+xsd:maxInclusive owl:sameAs xsd:maxInclusive .
+
+xsd:minInclusive owl:sameAs xsd:minInclusive .
+
+xsd:negativeInteger a rdfs:Datatype ;
+    owl:sameAs xsd:negativeInteger .
+
+xsd:nonNegativeInteger a rdfs:Datatype ;
+    owl:sameAs xsd:nonNegativeInteger .
+
+xsd:nonPositiveInteger a rdfs:Datatype ;
+    owl:sameAs xsd:nonPositiveInteger .
+
+xsd:normalizedString a rdfs:Datatype ;
+    owl:sameAs xsd:normalizedString .
+
+xsd:positiveInteger a rdfs:Datatype ;
+    owl:sameAs xsd:positiveInteger .
+
+xsd:short a rdfs:Datatype ;
+    owl:sameAs xsd:short .
+
+xsd:token a rdfs:Datatype ;
+    owl:sameAs xsd:token .
+
+xsd:unsignedByte a rdfs:Datatype ;
+    owl:sameAs xsd:unsignedByte .
+
+xsd:unsignedInt a rdfs:Datatype ;
+    owl:sameAs xsd:unsignedInt .
+
+xsd:unsignedLong a rdfs:Datatype ;
+    owl:sameAs xsd:unsignedLong .
+
+xsd:unsignedShort a rdfs:Datatype ;
+    owl:sameAs xsd:unsignedShort .
+
+owl:backwardCompatibleWith a owl:AnnotationProperty ;
+    owl:sameAs owl:backwardCompatibleWith .
+
+owl:deprecated a owl:AnnotationProperty ;
+    owl:sameAs owl:deprecated .
+
+owl:differentFrom owl:sameAs owl:differentFrom .
+
+owl:disjointWith owl:sameAs owl:disjointWith .
+
+owl:distinctMembers owl:sameAs owl:distinctMembers .
+
+owl:equivalentClass owl:sameAs owl:equivalentClass .
+
+owl:equivalentProperty owl:sameAs owl:equivalentProperty .
+
+owl:hasValue owl:sameAs owl:hasValue .
+
+owl:imports owl:sameAs owl:imports .
+
+owl:incompatibleWith a owl:AnnotationProperty ;
+    owl:sameAs owl:incompatibleWith .
+
+owl:intersectionOf owl:sameAs owl:intersectionOf .
+
+owl:maxQualifiedCardinality owl:sameAs owl:maxQualifiedCardinality .
+
+owl:members owl:sameAs owl:members .
+
+owl:onClass owl:sameAs owl:onClass .
+
+owl:onDatatype owl:sameAs owl:onDatatype .
+
+owl:onProperty owl:sameAs owl:onProperty .
+
+owl:priorVersion a owl:AnnotationProperty ;
+    owl:sameAs owl:priorVersion .
+
+owl:qualifiedCardinality owl:sameAs owl:qualifiedCardinality .
+
+owl:sameAs owl:sameAs owl:sameAs .
+
+owl:someValuesFrom owl:sameAs owl:someValuesFrom .
+
+owl:unionOf owl:sameAs owl:unionOf .
+
+owl:versionInfo a owl:AnnotationProperty ;
+    owl:sameAs owl:versionInfo .
+
+owl:withRestrictions owl:sameAs owl:withRestrictions .
+
+saref:hasFunction rdfs:domain _:n99f6e98aa6ff40d8842e44a1b7d73aa8b1,
+        owl:Thing,
+        saref:Device ;
+    owl:sameAs saref:hasFunction .
+
+saref:hasProfile owl:sameAs saref:hasProfile .
+
+saref:hasResult rdfs:domain saref:Observation ;
+    rdfs:range saref:PropertyValue ;
+    owl:sameAs saref:hasResult .
+
+saref:hasState rdfs:domain _:n99f6e98aa6ff40d8842e44a1b7d73aa8b1,
+        owl:Thing,
+        saref:Device ;
+    owl:sameAs saref:hasState .
+
+saref:hasValue rdfs:domain saref:PropertyValue ;
+    rdfs:range xsd:float ;
+    owl:sameAs saref:hasValue .
+
+saref:madeExecution rdfs:domain saref:Sensor ;
+    rdfs:range saref:Observation ;
+    owl:sameAs saref:madeExecution .
+
+s4bldg:contains rdfs:domain s4bldg:BuildingSpace ;
+    owl:sameAs s4bldg:contains .
+
+s4bldg:hasSpace rdfs:domain s4bldg:BuildingSpace ;
+    rdfs:range s4bldg:BuildingSpace ;
+    owl:sameAs s4bldg:hasSpace .
+
+s4bldg:isContainedIn rdfs:range s4bldg:BuildingSpace ;
+    owl:sameAs s4bldg:isContainedIn .
+
+s4ener:hasRecipient rdfs:domain s4ener:FlexOffer ;
+    rdfs:range _:n99f6e98aa6ff40d8842e44a1b7d73aa8b1,
+        owl:Thing ;
+    owl:sameAs s4ener:hasRecipient .
+
+s4ener:includes rdfs:domain s4ener:FlexOffer ;
+    rdfs:range s4ener:FlexibilityProfile ;
+    owl:sameAs s4ener:includes .
+
+s4ener:presentFillLevel owl:sameAs s4ener:presentFillLevel .
+
+s4ener:producedBy rdfs:domain s4ener:FlexOffer ;
+    owl:sameAs s4ener:producedBy .
+
+dm:Closed a dm:OpenClosedState,
+        owl:NamedIndividual,
+        owl:Thing,
+        saref:State ;
+    owl:differentFrom dm:Open ;
+    owl:sameAs dm:Closed .
+
+dm:Faulty a dm:OperationalState,
+        owl:NamedIndividual,
+        owl:Thing,
+        saref:State ;
+    owl:differentFrom dm:Working ;
+    owl:sameAs dm:Faulty .
+
+dm:Level1_Unpredictable a dm:ControllabilityLevel,
+        owl:NamedIndividual,
+        owl:Thing ;
+    owl:sameAs dm:Level1_Unpredictable .
+
+dm:Occupied a dm:OccupancyState,
+        owl:NamedIndividual,
+        owl:Thing,
+        saref:State ;
+    owl:differentFrom dm:Unoccupied ;
+    owl:sameAs dm:Occupied .
+
+dm:Open a dm:OpenClosedState,
+        owl:NamedIndividual,
+        owl:Thing,
+        saref:State ;
+    owl:sameAs dm:Open .
+
+dm:Unoccupied a dm:OccupancyState,
+        owl:NamedIndividual,
+        owl:Thing,
+        saref:State ;
+    owl:sameAs dm:Unoccupied .
+
+ex:AccessAddress_FHJ a dm:AccessAddress,
+        owl:NamedIndividual,
+        owl:Thing ;
+    dm:hasHouseNumber "11" ;
+    dm:hasNationalAddressRegisterId "AT-ADRCD-7235738" ;
+    dm:hasPostalCode "8020" ;
+    dm:hasStreetName "Eggenberger Allee" ;
+    owl:sameAs ex:AccessAddress_FHJ .
+
+ex:Aggregator_North a _:n99f6e98aa6ff40d8842e44a1b7d73aa8b1,
+        owl:NamedIndividual,
+        owl:Thing,
+        foaf:Agent ;
+    owl:sameAs ex:Aggregator_North .
+
+ex:Battery_Building07 a _:n99f6e98aa6ff40d8842e44a1b7d73aa8b18,
+        _:n99f6e98aa6ff40d8842e44a1b7d73aa8b7,
+        _:n99f6e98aa6ff40d8842e44a1b7d73aa8b8,
+        _:n99f6e98aa6ff40d8842e44a1b7d73aa8b9,
+        dm:EffectivelyControllable,
+        owl:NamedIndividual,
+        owl:Thing,
+        s4ener:Device,
+        s4ener:Storage ;
+    dm:hasControllabilityLevel dm:Level3_Controllable ;
+    dm:hasOperationalState dm:Working ;
+    dm:hasRatedPower "5.0"^^xsd:float ;
+    dm:hasSetpoint "3.2"^^xsd:float ;
+    dm:hasStateOfHealth "96.2"^^xsd:float ;
+    owl:sameAs ex:Battery_Building07 ;
+    owl:topDataProperty "3.2"^^xsd:float ;
+    s4ener:presentFillLevel ex:Battery_FillLevel .
+
+ex:Battery_FillLevel a owl:NamedIndividual,
+        saref:PropertyValue ;
+    owl:sameAs ex:Battery_FillLevel ;
+    saref:hasValue "74.0"^^xsd:float .
+
+ex:Battery_FlexibilityProfile a owl:NamedIndividual,
+        s4ener:FlexibilityProfile ;
+    owl:sameAs ex:Battery_FlexibilityProfile .
+
+ex:Building07 a owl:NamedIndividual,
+        s4bldg:Building,
+        s4bldg:BuildingSpace ;
+    dm:hasAccessAddress ex:AccessAddress_FHJ ;
+    dm:hasBuildingMass "185.4"^^xsd:float ;
+    dm:hasWeatherForecast ex:WeatherForecast_20260810_0800 ;
+    owl:sameAs ex:Building07 .
+
+ex:HeatMeter_Building07 a dm:ThermalMeter,
+        owl:NamedIndividual,
+        owl:Thing,
+        saref:Sensor ;
+    dm:hasInstallationDate "2021-03-15T00:00:00"^^xsd:dateTime ;
+    owl:sameAs ex:HeatMeter_Building07 .
+
+ex:HeatPump_PowerProfile a owl:NamedIndividual,
+        s4ener:PowerProfile ;
+    dm:hasMinimumPower "0.5"^^xsd:float ;
+    dm:hasMinimumRunTime "15.0"^^xsd:float ;
+    dm:hasRampingTime "2.0"^^xsd:float ;
+    owl:sameAs ex:HeatPump_PowerProfile ;
+    owl:topDataProperty "0.5"^^xsd:float .
+
+ex:HeatingFunction a owl:NamedIndividual,
+        saref:Function ;
+    owl:sameAs ex:HeatingFunction .
+
+ex:HotWaterTank_FillLevel a owl:NamedIndividual,
+        saref:PropertyValue ;
+    owl:sameAs ex:HotWaterTank_FillLevel ;
+    saref:hasValue "62.0"^^xsd:float .
+
+ex:LivingRoom a owl:NamedIndividual,
+        s4bldg:BuildingSpace ;
+    dm:hasComfortProfile ex:LivingRoomComfort ;
+    dm:hasOccupancyState dm:Occupied ;
+    owl:sameAs ex:LivingRoom ;
+    s4bldg:isContainedIn ex:Building07 .
+
+ex:LivingRoomComfort a _:n99f6e98aa6ff40d8842e44a1b7d73aa8b6,
+        dm:ComfortProfile,
+        owl:NamedIndividual,
+        owl:Thing ;
+    dm:hasManualOverride ex:Override_20260810 ;
+    dm:hasMaxTemperature "23.0"^^xsd:float ;
+    dm:hasMinTemperature "20.0"^^xsd:float ;
+    owl:sameAs ex:LivingRoomComfort .
+
+ex:MorningHotWater a dm:Schedule,
+        owl:NamedIndividual,
+        owl:Thing ;
+    dm:hasScheduledTemperature "55.0"^^xsd:float ;
+    dm:hasScheduledTime "06:30:00"^^xsd:time ;
+    owl:sameAs ex:MorningHotWater .
+
+ex:Override_20260810 a dm:ManualOverride,
+        owl:NamedIndividual,
+        owl:Thing ;
+    dm:hasOverrideExpiry "2026-08-10T22:00:00"^^xsd:dateTime ;
+    dm:hasOverrideValue "24.0"^^xsd:float ;
+    owl:sameAs ex:Override_20260810 .
+
+ex:PricePoint_0800 a cim:Point,
+        owl:NamedIndividual,
+        owl:Thing ;
+    dm:hasPrice "84.3"^^xsd:float ;
+    owl:sameAs ex:PricePoint_0800 .
+
+ex:PriceTimeSeries_20260810 a cim:TimeSeries,
+        owl:NamedIndividual,
+        owl:Thing ;
+    cim:TimeSeries.Point ex:PricePoint_0800 ;
+    owl:sameAs ex:PriceTimeSeries_20260810 .
+
+ex:UsagePoint_HI0042 a cim:UsagePoint,
+        owl:NamedIndividual,
+        owl:Thing ;
+    owl:sameAs ex:UsagePoint_HI0042 .
+
+ex:WeatherForecast_20260810_0800 a dm:WeatherForecast,
+        owl:NamedIndividual,
+        owl:Thing ;
+    dm:hasForecastTimestamp "2026-08-10T08:00:00"^^xsd:dateTime ;
+    dm:hasSolarIrradiance "420.0"^^xsd:float ;
+    dm:hasTemperature "18.5"^^xsd:float ;
+    owl:sameAs ex:WeatherForecast_20260810_0800 .
+
+xsd:decimal a rdfs:Datatype ;
+    owl:disjointWith xsd:float ;
+    owl:sameAs xsd:decimal .
+
+xsd:time a rdfs:Datatype ;
+    owl:sameAs xsd:time .
+
+owl:AllDifferent owl:sameAs owl:AllDifferent .
+
+owl:AllDisjointClasses owl:sameAs owl:AllDisjointClasses .
+
+owl:Ontology owl:sameAs owl:Ontology .
+
+saref:Function owl:sameAs saref:Function .
+
+<https://saref.etsi.org/core/v4.1.1/> owl:sameAs <https://saref.etsi.org/core/v4.1.1/> .
+
+s4bldg:Burner owl:sameAs s4bldg:Burner .
+
+s4bldg:ShadingDevice owl:sameAs s4bldg:ShadingDevice .
+
+<https://saref.etsi.org/saref4bldg/v2.1.1/> owl:sameAs <https://saref.etsi.org/saref4bldg/v2.1.1/> .
+
+<https://saref.etsi.org/saref4ener/v2.1.1/> owl:sameAs <https://saref.etsi.org/saref4ener/v2.1.1/> .
+
+s4grid:GridMeter owl:sameAs s4grid:GridMeter .
+
+<https://saref.etsi.org/saref4grid/v2.1.1/> owl:sameAs <https://saref.etsi.org/saref4grid/v2.1.1/> .
+
+cim:Analog.value a owl:DatatypeProperty ;
+    rdfs:domain cim:Analog,
+        owl:Thing ;
+    rdfs:range xsd:float ;
+    rdfs:subPropertyOf cim:Analog.value ;
+    owl:equivalentProperty cim:Analog.value ;
+    owl:sameAs cim:Analog.value .
+
+cim:ConformLoad.pfixed a owl:DatatypeProperty ;
+    rdfs:domain cim:ConductingEquipment,
+        cim:ConformLoad,
+        cim:EnergyConsumer,
+        cim:Equipment,
+        cim:PowerSystemResource,
+        owl:Thing ;
+    rdfs:range xsd:float ;
+    rdfs:subPropertyOf cim:ConformLoad.pfixed ;
+    owl:equivalentProperty cim:ConformLoad.pfixed ;
+    owl:sameAs cim:ConformLoad.pfixed .
+
+cim:MarketDocument.TimeSeries a owl:ObjectProperty ;
+    rdfs:domain cim:MarketDocument,
+        owl:Thing ;
+    rdfs:range cim:TimeSeries,
+        owl:Thing ;
+    rdfs:subPropertyOf cim:MarketDocument.TimeSeries ;
+    owl:equivalentProperty cim:MarketDocument.TimeSeries ;
+    owl:sameAs cim:MarketDocument.TimeSeries .
+
+cim:MeterReading.Meter a owl:ObjectProperty ;
+    rdfs:domain cim:MeterReading,
+        owl:Thing ;
+    rdfs:range _:n99f6e98aa6ff40d8842e44a1b7d73aa8b4,
+        cim:Meter,
+        owl:Thing ;
+    rdfs:subPropertyOf cim:MeterReading.Meter ;
+    owl:equivalentProperty cim:MeterReading.Meter ;
+    owl:sameAs cim:MeterReading.Meter .
+
+cim:Terminal.ConnectivityNode a owl:ObjectProperty ;
+    rdfs:domain _:n99f6e98aa6ff40d8842e44a1b7d73aa8b5,
+        cim:Terminal,
+        owl:Thing ;
+    rdfs:range cim:ConnectivityNode,
+        owl:Thing ;
+    rdfs:subPropertyOf cim:Terminal.ConnectivityNode ;
+    owl:equivalentProperty cim:Terminal.ConnectivityNode ;
+    owl:sameAs cim:Terminal.ConnectivityNode .
+
+cim:TimeSeries.Point a owl:ObjectProperty ;
+    rdfs:domain cim:TimeSeries,
+        owl:Thing ;
+    rdfs:range cim:Point,
+        owl:Thing ;
+    rdfs:subPropertyOf cim:TimeSeries.Point ;
+    owl:equivalentProperty cim:TimeSeries.Point ;
+    owl:sameAs cim:TimeSeries.Point .
+
+dm:Level2_PredictableNotControllable a dm:ControllabilityLevel,
+        owl:NamedIndividual,
+        owl:Thing ;
+    owl:sameAs dm:Level2_PredictableNotControllable .
+
+dm:correspondsToDevice a owl:ObjectProperty ;
+    rdfs:domain cim:EndDevice,
+        owl:Thing ;
+    rdfs:range _:n99f6e98aa6ff40d8842e44a1b7d73aa8b1,
+        owl:Thing,
+        saref:Device ;
+    rdfs:subPropertyOf dm:correspondsToDevice,
+        owl:topObjectProperty ;
+    owl:equivalentProperty dm:correspondsToDevice ;
+    owl:sameAs dm:correspondsToDevice .
+
+dm:hasAccessAddress a owl:ObjectProperty ;
+    rdfs:domain s4bldg:Building ;
+    rdfs:range dm:AccessAddress,
+        owl:Thing ;
+    rdfs:subPropertyOf dm:hasAccessAddress ;
+    owl:equivalentProperty dm:hasAccessAddress ;
+    owl:sameAs dm:hasAccessAddress .
+
+dm:hasBuildingMass a owl:DatatypeProperty ;
+    rdfs:domain s4bldg:Building ;
+    rdfs:range xsd:float ;
+    rdfs:subPropertyOf dm:hasBuildingMass ;
+    owl:equivalentProperty dm:hasBuildingMass ;
+    owl:sameAs dm:hasBuildingMass .
+
+dm:hasCarbonIntensity a owl:DatatypeProperty ;
+    rdfs:domain cim:TimeSeries,
+        dm:CarbonIntensityForecast,
+        owl:Thing ;
+    rdfs:range xsd:float ;
+    rdfs:subPropertyOf dm:hasCarbonIntensity ;
+    owl:equivalentProperty dm:hasCarbonIntensity ;
+    owl:sameAs dm:hasCarbonIntensity .
+
+dm:hasCloudCover a owl:DatatypeProperty ;
+    rdfs:domain dm:WeatherForecast,
+        owl:Thing ;
+    rdfs:range xsd:float ;
+    rdfs:subPropertyOf dm:hasCloudCover ;
+    owl:equivalentProperty dm:hasCloudCover ;
+    owl:sameAs dm:hasCloudCover .
+
+dm:hasCoefficientOfPerformance a owl:DatatypeProperty ;
+    rdfs:domain _:n99f6e98aa6ff40d8842e44a1b7d73aa8b15,
+        dm:HeatPump,
+        owl:Thing,
+        s4bldg:DistributionFlowDevice,
+        s4ener:Device ;
+    rdfs:range xsd:float ;
+    rdfs:subPropertyOf dm:hasCoefficientOfPerformance ;
+    owl:equivalentProperty dm:hasCoefficientOfPerformance ;
+    owl:sameAs dm:hasCoefficientOfPerformance .
+
+dm:hasComfortProfile a owl:ObjectProperty ;
+    rdfs:domain s4bldg:BuildingSpace ;
+    rdfs:range _:n99f6e98aa6ff40d8842e44a1b7d73aa8b6,
+        dm:ComfortProfile,
+        owl:Thing ;
+    rdfs:subPropertyOf dm:hasComfortProfile ;
+    owl:equivalentProperty dm:hasComfortProfile ;
+    owl:sameAs dm:hasComfortProfile .
+
+dm:hasCongestionLevel a owl:DatatypeProperty ;
+    rdfs:domain cim:ConductingEquipment,
+        cim:Equipment,
+        cim:PowerSystemResource,
+        dm:CongestionPoint,
+        owl:Thing ;
+    rdfs:range xsd:float ;
+    rdfs:subPropertyOf dm:hasCongestionLevel ;
+    owl:equivalentProperty dm:hasCongestionLevel ;
+    owl:sameAs dm:hasCongestionLevel .
+
+dm:hasDepartureTime a owl:DatatypeProperty ;
+    rdfs:domain dm:ElectricVehicle,
+        owl:Thing,
+        s4ener:Device ;
+    rdfs:range xsd:dateTime ;
+    rdfs:subPropertyOf dm:hasDepartureTime ;
+    owl:equivalentProperty dm:hasDepartureTime ;
+    owl:sameAs dm:hasDepartureTime .
+
+dm:hasForecastTimestamp a owl:DatatypeProperty ;
+    rdfs:domain dm:WeatherForecast,
+        owl:Thing ;
+    rdfs:range xsd:dateTime ;
+    rdfs:subPropertyOf dm:hasForecastTimestamp ;
+    owl:equivalentProperty dm:hasForecastTimestamp ;
+    owl:sameAs dm:hasForecastTimestamp .
+
+dm:hasHotWaterSchedule a owl:ObjectProperty ;
+    rdfs:domain _:n99f6e98aa6ff40d8842e44a1b7d73aa8b1,
+        _:n99f6e98aa6ff40d8842e44a1b7d73aa8b18,
+        dm:ThermalStorage,
+        owl:Thing,
+        saref:Device,
+        s4ener:Storage ;
+    rdfs:range dm:Schedule,
+        owl:Thing ;
+    rdfs:subPropertyOf dm:hasHotWaterSchedule ;
+    owl:equivalentProperty dm:hasHotWaterSchedule ;
+    owl:sameAs dm:hasHotWaterSchedule .
+
+dm:hasHouseNumber a owl:DatatypeProperty ;
+    rdfs:domain dm:AccessAddress,
+        owl:Thing ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf dm:hasHouseNumber ;
+    owl:equivalentProperty dm:hasHouseNumber ;
+    owl:sameAs dm:hasHouseNumber .
+
+dm:hasInstallationDate a owl:DatatypeProperty ;
+    rdfs:domain dm:ThermalMeter,
+        owl:Thing,
+        saref:Sensor ;
+    rdfs:range xsd:dateTime ;
+    rdfs:subPropertyOf dm:hasInstallationDate ;
+    owl:equivalentProperty dm:hasInstallationDate ;
+    owl:sameAs dm:hasInstallationDate .
+
+dm:hasLatitude a owl:DatatypeProperty ;
+    rdfs:domain dm:Location,
+        owl:Thing ;
+    rdfs:range xsd:double ;
+    rdfs:subPropertyOf dm:hasLatitude ;
+    owl:equivalentProperty dm:hasLatitude ;
+    owl:sameAs dm:hasLatitude .
+
+dm:hasLocation a owl:ObjectProperty ;
+    rdfs:domain s4bldg:Building ;
+    rdfs:range dm:Location,
+        owl:Thing ;
+    rdfs:subPropertyOf dm:hasLocation ;
+    owl:equivalentProperty dm:hasLocation ;
+    owl:sameAs dm:hasLocation .
+
+dm:hasLongitude a owl:DatatypeProperty ;
+    rdfs:domain dm:Location,
+        owl:Thing ;
+    rdfs:range xsd:double ;
+    rdfs:subPropertyOf dm:hasLongitude ;
+    owl:equivalentProperty dm:hasLongitude ;
+    owl:sameAs dm:hasLongitude .
+
+dm:hasMaxTemperature a owl:DatatypeProperty ;
+    rdfs:domain _:n99f6e98aa6ff40d8842e44a1b7d73aa8b6,
+        dm:ComfortProfile,
+        owl:Thing ;
+    rdfs:range xsd:float ;
+    rdfs:subPropertyOf dm:hasMaxTemperature ;
+    owl:equivalentProperty dm:hasMaxTemperature ;
+    owl:sameAs dm:hasMaxTemperature .
+
+dm:hasMinChargeLevel a owl:DatatypeProperty ;
+    rdfs:domain dm:ElectricVehicle,
+        owl:Thing,
+        s4ener:Device ;
+    rdfs:range xsd:float ;
+    rdfs:subPropertyOf dm:hasMinChargeLevel ;
+    owl:equivalentProperty dm:hasMinChargeLevel ;
+    owl:sameAs dm:hasMinChargeLevel .
+
+dm:hasMinTemperature a owl:DatatypeProperty ;
+    rdfs:domain _:n99f6e98aa6ff40d8842e44a1b7d73aa8b6,
+        dm:ComfortProfile,
+        owl:Thing ;
+    rdfs:range xsd:float ;
+    rdfs:subPropertyOf dm:hasMinTemperature ;
+    owl:equivalentProperty dm:hasMinTemperature ;
+    owl:sameAs dm:hasMinTemperature .
+
+dm:hasMinimumPower a owl:DatatypeProperty ;
+    rdfs:domain s4ener:PowerProfile ;
+    rdfs:range xsd:float ;
+    rdfs:subPropertyOf dm:hasMinimumPower,
+        owl:topDataProperty ;
+    owl:equivalentProperty dm:hasMinimumPower ;
+    owl:sameAs dm:hasMinimumPower .
+
+dm:hasMinimumRunTime a owl:DatatypeProperty ;
+    rdfs:domain s4ener:PowerProfile ;
+    rdfs:range xsd:float ;
+    rdfs:subPropertyOf dm:hasMinimumRunTime ;
+    owl:equivalentProperty dm:hasMinimumRunTime ;
+    owl:sameAs dm:hasMinimumRunTime .
+
+dm:hasMunicipalityCode a owl:DatatypeProperty ;
+    rdfs:domain dm:AccessAddress,
+        owl:Thing ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf dm:hasMunicipalityCode ;
+    owl:equivalentProperty dm:hasMunicipalityCode ;
+    owl:sameAs dm:hasMunicipalityCode .
+
+dm:hasNationalAddressRegisterId a owl:DatatypeProperty ;
+    rdfs:domain dm:AccessAddress,
+        owl:Thing ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf dm:hasNationalAddressRegisterId ;
+    owl:equivalentProperty dm:hasNationalAddressRegisterId ;
+    owl:sameAs dm:hasNationalAddressRegisterId .
+
+dm:hasOccupancyState a owl:ObjectProperty ;
+    rdfs:domain s4bldg:BuildingSpace ;
+    rdfs:range dm:OccupancyState,
+        owl:Thing,
+        saref:State ;
+    rdfs:subPropertyOf dm:hasOccupancyState ;
+    owl:equivalentProperty dm:hasOccupancyState ;
+    owl:sameAs dm:hasOccupancyState .
+
+dm:hasOpenState a owl:ObjectProperty ;
+    rdfs:domain s4bldg:BuildingObject ;
+    rdfs:range dm:OpenClosedState,
+        owl:Thing,
+        saref:State ;
+    rdfs:subPropertyOf dm:hasOpenState ;
+    owl:equivalentProperty dm:hasOpenState ;
+    owl:sameAs dm:hasOpenState .
+
+dm:hasOverrideExpiry a owl:DatatypeProperty ;
+    rdfs:domain dm:ManualOverride,
+        owl:Thing ;
+    rdfs:range xsd:dateTime ;
+    rdfs:subPropertyOf dm:hasOverrideExpiry ;
+    owl:equivalentProperty dm:hasOverrideExpiry ;
+    owl:sameAs dm:hasOverrideExpiry .
+
+dm:hasOverrideValue a owl:DatatypeProperty ;
+    rdfs:domain dm:ManualOverride,
+        owl:Thing ;
+    rdfs:range xsd:float ;
+    rdfs:subPropertyOf dm:hasOverrideValue ;
+    owl:equivalentProperty dm:hasOverrideValue ;
+    owl:sameAs dm:hasOverrideValue .
+
+dm:hasPostalCode a owl:DatatypeProperty ;
+    rdfs:domain dm:AccessAddress,
+        owl:Thing ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf dm:hasPostalCode ;
+    owl:equivalentProperty dm:hasPostalCode ;
+    owl:sameAs dm:hasPostalCode .
+
+dm:hasPrice a owl:DatatypeProperty ;
+    rdfs:domain cim:Point,
+        owl:Thing ;
+    rdfs:range xsd:float ;
+    rdfs:subPropertyOf dm:hasPrice ;
+    owl:equivalentProperty dm:hasPrice ;
+    owl:sameAs dm:hasPrice .
+
+dm:hasQuantity a owl:DatatypeProperty ;
+    rdfs:domain cim:Point,
+        owl:Thing ;
+    rdfs:range xsd:float ;
+    rdfs:subPropertyOf dm:hasQuantity ;
+    owl:equivalentProperty dm:hasQuantity ;
+    owl:sameAs dm:hasQuantity .
+
+dm:hasRampingTime a owl:DatatypeProperty ;
+    rdfs:domain s4ener:PowerProfile ;
+    rdfs:range xsd:float ;
+    rdfs:subPropertyOf dm:hasRampingTime ;
+    owl:equivalentProperty dm:hasRampingTime ;
+    owl:sameAs dm:hasRampingTime .
+
+dm:hasRatedPower a owl:DatatypeProperty ;
+    rdfs:domain s4ener:Device ;
+    rdfs:range xsd:float ;
+    rdfs:subPropertyOf dm:hasRatedPower ;
+    owl:equivalentProperty dm:hasRatedPower ;
+    owl:sameAs dm:hasRatedPower .
+
+dm:hasRemovalDate a owl:DatatypeProperty ;
+    rdfs:domain dm:ThermalMeter,
+        owl:Thing,
+        saref:Sensor ;
+    rdfs:range xsd:dateTime ;
+    rdfs:subPropertyOf dm:hasRemovalDate ;
+    owl:equivalentProperty dm:hasRemovalDate ;
+    owl:sameAs dm:hasRemovalDate .
+
+dm:hasReturnTemperature a owl:DatatypeProperty ;
+    rdfs:domain _:n99f6e98aa6ff40d8842e44a1b7d73aa8b14,
+        dm:ThermalZoneState,
+        owl:Thing ;
+    rdfs:range xsd:float ;
+    rdfs:subPropertyOf dm:hasReturnTemperature ;
+    owl:equivalentProperty dm:hasReturnTemperature ;
+    owl:sameAs dm:hasReturnTemperature .
+
+dm:hasScheduledTemperature a owl:DatatypeProperty ;
+    rdfs:domain dm:Schedule,
+        owl:Thing ;
+    rdfs:range xsd:float ;
+    rdfs:subPropertyOf dm:hasScheduledTemperature ;
+    owl:equivalentProperty dm:hasScheduledTemperature ;
+    owl:sameAs dm:hasScheduledTemperature .
+
+dm:hasScheduledTime a owl:DatatypeProperty ;
+    rdfs:domain dm:Schedule,
+        owl:Thing ;
+    rdfs:range xsd:time ;
+    rdfs:subPropertyOf dm:hasScheduledTime ;
+    owl:equivalentProperty dm:hasScheduledTime ;
+    owl:sameAs dm:hasScheduledTime .
+
+dm:hasSetpoint a owl:DatatypeProperty ;
+    rdfs:domain s4ener:Device ;
+    rdfs:range xsd:float ;
+    rdfs:subPropertyOf dm:hasSetpoint,
+        owl:topDataProperty ;
+    owl:equivalentProperty dm:hasSetpoint ;
+    owl:sameAs dm:hasSetpoint .
+
+dm:hasShadingPosition a owl:DatatypeProperty ;
+    rdfs:domain s4bldg:ShadingDevice ;
+    rdfs:range xsd:float ;
+    rdfs:subPropertyOf dm:hasShadingPosition ;
+    owl:equivalentProperty dm:hasShadingPosition ;
+    owl:sameAs dm:hasShadingPosition .
+
+dm:hasSolarIrradiance a owl:DatatypeProperty ;
+    rdfs:domain dm:WeatherForecast,
+        owl:Thing ;
+    rdfs:range xsd:float ;
+    rdfs:subPropertyOf dm:hasSolarIrradiance ;
+    owl:equivalentProperty dm:hasSolarIrradiance ;
+    owl:sameAs dm:hasSolarIrradiance .
+
+dm:hasStreetName a owl:DatatypeProperty ;
+    rdfs:domain dm:AccessAddress,
+        owl:Thing ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf dm:hasStreetName ;
+    owl:equivalentProperty dm:hasStreetName ;
+    owl:sameAs dm:hasStreetName .
+
+dm:hasSupplyTemperature a owl:DatatypeProperty ;
+    rdfs:domain _:n99f6e98aa6ff40d8842e44a1b7d73aa8b14,
+        dm:ThermalZoneState,
+        owl:Thing ;
+    rdfs:range xsd:float ;
+    rdfs:subPropertyOf dm:hasSupplyTemperature ;
+    owl:equivalentProperty dm:hasSupplyTemperature ;
+    owl:sameAs dm:hasSupplyTemperature .
+
+dm:hasTemperature a owl:DatatypeProperty ;
+    rdfs:domain dm:WeatherForecast,
+        owl:Thing ;
+    rdfs:range xsd:float ;
+    rdfs:subPropertyOf dm:hasTemperature ;
+    owl:equivalentProperty dm:hasTemperature ;
+    owl:sameAs dm:hasTemperature .
+
+dm:hasThermalMeter a owl:ObjectProperty ;
+    rdfs:domain _:n99f6e98aa6ff40d8842e44a1b7d73aa8b13,
+        dm:ThermalGridConnection,
+        owl:Thing ;
+    rdfs:range dm:ThermalMeter,
+        owl:Thing,
+        saref:Sensor ;
+    rdfs:subPropertyOf dm:hasThermalMeter ;
+    owl:equivalentProperty dm:hasThermalMeter ;
+    owl:sameAs dm:hasThermalMeter .
+
+dm:hasThermalPrice a owl:DatatypeProperty ;
+    rdfs:domain dm:ThermalPriceSignal,
+        owl:Thing ;
+    rdfs:range xsd:float ;
+    rdfs:subPropertyOf dm:hasThermalPrice ;
+    owl:equivalentProperty dm:hasThermalPrice ;
+    owl:sameAs dm:hasThermalPrice .
+
+dm:hasUnitAddress a owl:ObjectProperty ;
+    rdfs:domain s4bldg:BuildingSpace ;
+    rdfs:range dm:UnitAddress,
+        owl:Thing ;
+    rdfs:subPropertyOf dm:hasUnitAddress ;
+    owl:equivalentProperty dm:hasUnitAddress ;
+    owl:sameAs dm:hasUnitAddress .
+
+dm:hasWeatherForecast a owl:ObjectProperty ;
+    rdfs:domain s4bldg:Building ;
+    rdfs:range dm:WeatherForecast,
+        owl:Thing ;
+    rdfs:subPropertyOf dm:hasWeatherForecast ;
+    owl:equivalentProperty dm:hasWeatherForecast ;
+    owl:sameAs dm:hasWeatherForecast .
+
+dm:hasWindSpeed a owl:DatatypeProperty ;
+    rdfs:domain dm:WeatherForecast,
+        owl:Thing ;
+    rdfs:range xsd:float ;
+    rdfs:subPropertyOf dm:hasWindSpeed ;
+    owl:equivalentProperty dm:hasWindSpeed ;
+    owl:sameAs dm:hasWindSpeed .
+
+ex:DistrictHeatingNetwork_North a _:n99f6e98aa6ff40d8842e44a1b7d73aa8b15,
+        dm:ThermalGrid,
+        owl:NamedIndividual,
+        owl:Thing ;
+    owl:sameAs ex:DistrictHeatingNetwork_North .
+
+ex:SmartMeter_HI0042_saref a _:n99f6e98aa6ff40d8842e44a1b7d73aa8b1,
+        owl:NamedIndividual,
+        owl:Thing,
+        saref:Device ;
+    owl:sameAs ex:SmartMeter_HI0042_saref .
+
+xsd:double a rdfs:Datatype ;
+    owl:sameAs xsd:double .
+
+owl:Nothing a owl:Class ;
+    rdfs:subClassOf _:n99f6e98aa6ff40d8842e44a1b7d73aa8b1,
+        _:n99f6e98aa6ff40d8842e44a1b7d73aa8b13,
+        _:n99f6e98aa6ff40d8842e44a1b7d73aa8b14,
+        _:n99f6e98aa6ff40d8842e44a1b7d73aa8b15,
+        _:n99f6e98aa6ff40d8842e44a1b7d73aa8b18,
+        _:n99f6e98aa6ff40d8842e44a1b7d73aa8b4,
+        _:n99f6e98aa6ff40d8842e44a1b7d73aa8b5,
+        _:n99f6e98aa6ff40d8842e44a1b7d73aa8b6,
+        _:n99f6e98aa6ff40d8842e44a1b7d73aa8b7,
+        _:n99f6e98aa6ff40d8842e44a1b7d73aa8b8,
+        _:n99f6e98aa6ff40d8842e44a1b7d73aa8b9,
+        cim:ACLineSegment,
+        cim:Analog,
+        cim:Bay,
+        cim:ConductingEquipment,
+        cim:ConformLoad,
+        cim:ConnectivityNode,
+        cim:EndDevice,
+        cim:EnergyConsumer,
+        cim:EnergySource,
+        cim:Equipment,
+        cim:Feeder,
+        cim:MarketDocument,
+        cim:Meter,
+        cim:MeterReading,
+        cim:Point,
+        cim:PowerSystemResource,
+        cim:PowerTransformer,
+        cim:Substation,
+        cim:Terminal,
+        cim:TimeSeries,
+        cim:UsagePoint,
+        cim:VoltageLevel,
+        dm:AccessAddress,
+        dm:CarbonIntensityForecast,
+        dm:ComfortProfile,
+        dm:CongestionPoint,
+        dm:ControllabilityLevel,
+        dm:EffectivelyControllable,
+        dm:ElectricVehicle,
+        dm:GenerationForecast,
+        dm:HeatPump,
+        dm:LoadForecast,
+        dm:Location,
+        dm:ManualOverride,
+        dm:OccupancyState,
+        dm:OpenClosedState,
+        dm:OperationalState,
+        dm:PVInverter,
+        dm:Schedule,
+        dm:ThermalGrid,
+        dm:ThermalGridConnection,
+        dm:ThermalMeter,
+        dm:ThermalPriceSignal,
+        dm:ThermalStorage,
+        dm:ThermalZoneState,
+        dm:UnitAddress,
+        dm:WeatherForecast,
+        owl:Nothing,
+        owl:Thing,
+        saref:Device,
+        saref:Sensor,
+        saref:State,
+        s4bldg:DistributionFlowDevice,
+        s4ener:Device,
+        s4ener:Storage ;
+    owl:equivalentClass owl:Nothing ;
+    owl:sameAs owl:Nothing .
+
+owl:topDataProperty owl:sameAs owl:topDataProperty .
+
+owl:topObjectProperty owl:sameAs owl:topObjectProperty .
+
+foaf:Agent rdfs:subClassOf _:n99f6e98aa6ff40d8842e44a1b7d73aa8b1,
+        owl:Thing ;
+    owl:sameAs foaf:Agent .
+
+saref:Observation owl:sameAs saref:Observation .
+
+s4bldg:BuildingObject owl:sameAs s4bldg:BuildingObject .
+
+s4ener:FlexibilityProfile owl:sameAs s4ener:FlexibilityProfile .
+
+cim:ACLineSegment a owl:Class ;
+    rdfs:subClassOf cim:ACLineSegment,
+        cim:ConductingEquipment,
+        cim:Equipment,
+        cim:PowerSystemResource,
+        owl:Thing ;
+    owl:equivalentClass cim:ACLineSegment ;
+    owl:sameAs cim:ACLineSegment .
+
+cim:Bay a owl:Class ;
+    rdfs:subClassOf cim:Bay,
+        owl:Thing ;
+    owl:disjointWith cim:Feeder,
+        cim:Substation ;
+    owl:equivalentClass cim:Bay ;
+    owl:sameAs cim:Bay .
+
+cim:EnergySource a owl:Class ;
+    rdfs:subClassOf cim:ConductingEquipment,
+        cim:EnergySource,
+        cim:Equipment,
+        cim:PowerSystemResource,
+        owl:Thing ;
+    owl:equivalentClass cim:EnergySource ;
+    owl:sameAs cim:EnergySource .
+
+cim:Meter.UsagePoint a owl:ObjectProperty ;
+    rdfs:domain _:n99f6e98aa6ff40d8842e44a1b7d73aa8b4,
+        cim:Meter,
+        owl:Thing ;
+    rdfs:range cim:UsagePoint,
+        owl:Thing ;
+    rdfs:subPropertyOf cim:Meter.UsagePoint ;
+    owl:equivalentProperty cim:Meter.UsagePoint ;
+    owl:sameAs cim:Meter.UsagePoint .
+
+cim:Terminal.ConductingEquipment a owl:ObjectProperty ;
+    rdfs:domain _:n99f6e98aa6ff40d8842e44a1b7d73aa8b5,
+        cim:Terminal,
+        owl:Thing ;
+    rdfs:range cim:ConductingEquipment,
+        cim:Equipment,
+        cim:PowerSystemResource,
+        owl:Thing ;
+    rdfs:subPropertyOf cim:Terminal.ConductingEquipment ;
+    owl:equivalentProperty cim:Terminal.ConductingEquipment ;
+    owl:sameAs cim:Terminal.ConductingEquipment .
+
+cim:VoltageLevel a owl:Class ;
+    rdfs:subClassOf cim:VoltageLevel,
+        owl:Thing ;
+    owl:equivalentClass cim:VoltageLevel ;
+    owl:sameAs cim:VoltageLevel .
+
+dm:connectsTo a owl:ObjectProperty ;
+    rdfs:domain _:n99f6e98aa6ff40d8842e44a1b7d73aa8b13,
+        dm:ThermalGridConnection,
+        owl:Thing ;
+    rdfs:range _:n99f6e98aa6ff40d8842e44a1b7d73aa8b15,
+        dm:ThermalGrid,
+        owl:Thing ;
+    rdfs:subPropertyOf dm:connectsTo,
+        owl:topObjectProperty ;
+    owl:equivalentProperty dm:connectsTo ;
+    owl:sameAs dm:connectsTo .
+
+dm:hasControllabilityLevel a owl:ObjectProperty ;
+    rdfs:domain s4ener:Device ;
+    rdfs:range dm:ControllabilityLevel,
+        owl:Thing ;
+    rdfs:subPropertyOf dm:hasControllabilityLevel ;
+    owl:equivalentProperty dm:hasControllabilityLevel ;
+    owl:sameAs dm:hasControllabilityLevel .
+
+dm:hasManualOverride a owl:ObjectProperty ;
+    rdfs:domain _:n99f6e98aa6ff40d8842e44a1b7d73aa8b6,
+        dm:ComfortProfile,
+        owl:Thing ;
+    rdfs:range dm:ManualOverride,
+        owl:Thing ;
+    rdfs:subPropertyOf dm:hasManualOverride ;
+    owl:equivalentProperty dm:hasManualOverride ;
+    owl:sameAs dm:hasManualOverride .
+
+dm:hasOperationalState a owl:ObjectProperty ;
+    rdfs:domain s4ener:Device ;
+    rdfs:range dm:OperationalState,
+        owl:Thing,
+        saref:State ;
+    rdfs:subPropertyOf dm:hasOperationalState ;
+    owl:equivalentProperty dm:hasOperationalState ;
+    owl:sameAs dm:hasOperationalState .
+
+dm:hasStateOfHealth a owl:DatatypeProperty ;
+    rdfs:domain _:n99f6e98aa6ff40d8842e44a1b7d73aa8b18,
+        s4ener:Storage ;
+    rdfs:range xsd:float ;
+    rdfs:subPropertyOf dm:hasStateOfHealth ;
+    owl:equivalentProperty dm:hasStateOfHealth ;
+    owl:sameAs dm:hasStateOfHealth .
+
+dm:isStateOf a owl:ObjectProperty ;
+    rdfs:domain _:n99f6e98aa6ff40d8842e44a1b7d73aa8b14,
+        dm:ThermalZoneState,
+        owl:Thing ;
+    rdfs:subPropertyOf dm:isStateOf ;
+    owl:equivalentProperty dm:isStateOf ;
+    owl:sameAs dm:isStateOf .
+
+cim:Analog a owl:Class ;
+    rdfs:subClassOf cim:Analog,
+        owl:Thing ;
+    owl:equivalentClass cim:Analog ;
+    owl:sameAs cim:Analog .
+
+cim:ConformLoad a owl:Class ;
+    rdfs:subClassOf cim:ConductingEquipment,
+        cim:ConformLoad,
+        cim:EnergyConsumer,
+        cim:Equipment,
+        cim:PowerSystemResource,
+        owl:Thing ;
+    owl:equivalentClass cim:ConformLoad ;
+    owl:sameAs cim:ConformLoad .
+
+cim:ConnectivityNode a owl:Class ;
+    rdfs:subClassOf cim:ConnectivityNode,
+        owl:Thing ;
+    owl:equivalentClass cim:ConnectivityNode ;
+    owl:sameAs cim:ConnectivityNode .
+
+cim:MeterReading a owl:Class ;
+    rdfs:subClassOf cim:MeterReading,
+        owl:Thing ;
+    owl:equivalentClass cim:MeterReading ;
+    owl:sameAs cim:MeterReading .
+
+cim:PowerTransformer a owl:Class ;
+    rdfs:subClassOf cim:ConductingEquipment,
+        cim:Equipment,
+        cim:PowerSystemResource,
+        cim:PowerTransformer,
+        owl:Thing ;
+    owl:equivalentClass cim:PowerTransformer ;
+    owl:sameAs cim:PowerTransformer .
+
+dm:GenerationForecast a owl:Class ;
+    rdfs:subClassOf cim:TimeSeries,
+        dm:GenerationForecast,
+        owl:Thing ;
+    owl:equivalentClass dm:GenerationForecast ;
+    owl:sameAs dm:GenerationForecast .
+
+dm:LoadForecast a owl:Class ;
+    rdfs:subClassOf cim:TimeSeries,
+        dm:LoadForecast,
+        owl:Thing ;
+    owl:equivalentClass dm:LoadForecast ;
+    owl:sameAs dm:LoadForecast .
+
+dm:PVInverter a owl:Class ;
+    rdfs:subClassOf dm:PVInverter,
+        owl:Thing,
+        s4ener:Device ;
+    owl:equivalentClass dm:PVInverter ;
+    owl:sameAs dm:PVInverter .
+
+dm:ThermalPriceSignal a owl:Class ;
+    rdfs:subClassOf dm:ThermalPriceSignal,
+        owl:Thing ;
+    owl:equivalentClass dm:ThermalPriceSignal ;
+    owl:sameAs dm:ThermalPriceSignal .
+
+dm:UnitAddress a owl:Class ;
+    rdfs:subClassOf dm:UnitAddress,
+        owl:Thing ;
+    owl:equivalentClass dm:UnitAddress ;
+    owl:sameAs dm:UnitAddress .
+
+dm:Working a dm:OperationalState,
+        owl:NamedIndividual,
+        owl:Thing,
+        saref:State ;
+    owl:sameAs dm:Working .
+
+saref:PropertyValue owl:sameAs saref:PropertyValue .
+
+s4bldg:DistributionFlowDevice owl:sameAs s4bldg:DistributionFlowDevice .
+
+s4ener:FlexOffer owl:sameAs s4ener:FlexOffer .
+
+s4ener:PowerProfile owl:sameAs s4ener:PowerProfile .
+
+cim:EndDevice a owl:Class ;
+    rdfs:subClassOf cim:EndDevice,
+        owl:Thing ;
+    owl:equivalentClass cim:EndDevice ;
+    owl:sameAs cim:EndDevice .
+
+cim:EnergyConsumer a owl:Class ;
+    rdfs:subClassOf cim:ConductingEquipment,
+        cim:EnergyConsumer,
+        cim:Equipment,
+        cim:PowerSystemResource,
+        owl:Thing ;
+    owl:equivalentClass cim:EnergyConsumer ;
+    owl:sameAs cim:EnergyConsumer .
+
+cim:Feeder a owl:Class ;
+    rdfs:subClassOf cim:Feeder,
+        owl:Thing ;
+    owl:disjointWith cim:Substation ;
+    owl:equivalentClass cim:Feeder ;
+    owl:sameAs cim:Feeder .
+
+cim:MarketDocument a owl:Class ;
+    rdfs:subClassOf cim:MarketDocument,
+        owl:Thing ;
+    owl:equivalentClass cim:MarketDocument ;
+    owl:sameAs cim:MarketDocument .
+
+cim:Substation a owl:Class ;
+    rdfs:subClassOf cim:Substation,
+        owl:Thing ;
+    owl:equivalentClass cim:Substation ;
+    owl:sameAs cim:Substation .
+
+cim:Terminal a owl:Class ;
+    rdfs:subClassOf _:n99f6e98aa6ff40d8842e44a1b7d73aa8b5,
+        cim:Terminal,
+        owl:Thing ;
+    owl:equivalentClass cim:Terminal ;
+    owl:sameAs cim:Terminal .
+
+dm:CarbonIntensityForecast a owl:Class ;
+    rdfs:subClassOf cim:TimeSeries,
+        dm:CarbonIntensityForecast,
+        owl:Thing ;
+    owl:equivalentClass dm:CarbonIntensityForecast ;
+    owl:sameAs dm:CarbonIntensityForecast .
+
+dm:CongestionPoint a owl:Class ;
+    rdfs:subClassOf cim:ConductingEquipment,
+        cim:Equipment,
+        cim:PowerSystemResource,
+        dm:CongestionPoint,
+        owl:Thing ;
+    owl:equivalentClass dm:CongestionPoint ;
+    owl:sameAs dm:CongestionPoint .
+
+dm:Level3_Controllable a dm:ControllabilityLevel,
+        owl:NamedIndividual,
+        owl:Thing ;
+    owl:sameAs dm:Level3_Controllable .
+
+dm:ThermalStorage a owl:Class ;
+    rdfs:subClassOf _:n99f6e98aa6ff40d8842e44a1b7d73aa8b1,
+        _:n99f6e98aa6ff40d8842e44a1b7d73aa8b18,
+        dm:ThermalStorage,
+        owl:Thing,
+        saref:Device,
+        s4ener:Storage ;
+    owl:equivalentClass dm:ThermalStorage ;
+    owl:sameAs dm:ThermalStorage .
+
+xsd:dateTime a rdfs:Datatype ;
+    owl:disjointWith xsd:decimal,
+        xsd:float ;
+    owl:sameAs xsd:dateTime .
+
+xsd:string a rdfs:Datatype ;
+    owl:sameAs xsd:string .
+
+s4bldg:Building owl:sameAs s4bldg:Building .
+
+cim:Meter a owl:Class ;
+    rdfs:subClassOf _:n99f6e98aa6ff40d8842e44a1b7d73aa8b4,
+        cim:Meter,
+        owl:Thing ;
+    owl:equivalentClass cim:Meter ;
+    owl:sameAs cim:Meter .
+
+cim:UsagePoint a owl:Class ;
+    rdfs:subClassOf cim:UsagePoint,
+        owl:Thing ;
+    owl:equivalentClass cim:UsagePoint ;
+    owl:sameAs cim:UsagePoint .
+
+dm:ElectricVehicle a owl:Class ;
+    rdfs:subClassOf dm:ElectricVehicle,
+        owl:Thing,
+        s4ener:Device ;
+    owl:equivalentClass dm:ElectricVehicle ;
+    owl:sameAs dm:ElectricVehicle .
+
+dm:HeatPump a owl:Class ;
+    rdfs:subClassOf _:n99f6e98aa6ff40d8842e44a1b7d73aa8b15,
+        dm:HeatPump,
+        owl:Thing,
+        s4bldg:DistributionFlowDevice,
+        s4ener:Device ;
+    owl:disjointWith s4bldg:Burner ;
+    owl:equivalentClass dm:HeatPump ;
+    owl:sameAs dm:HeatPump .
+
+dm:Location a owl:Class ;
+    rdfs:subClassOf dm:Location,
+        owl:Thing ;
+    owl:equivalentClass dm:Location ;
+    owl:sameAs dm:Location .
+
+dm:OccupancyState a owl:Class ;
+    rdfs:subClassOf dm:OccupancyState,
+        owl:Thing,
+        saref:State ;
+    owl:equivalentClass dm:OccupancyState ;
+    owl:sameAs dm:OccupancyState .
+
+dm:OpenClosedState a owl:Class ;
+    rdfs:subClassOf dm:OpenClosedState,
+        owl:Thing,
+        saref:State ;
+    owl:equivalentClass dm:OpenClosedState ;
+    owl:sameAs dm:OpenClosedState .
+
+dm:OperationalState a owl:Class ;
+    rdfs:subClassOf dm:OperationalState,
+        owl:Thing,
+        saref:State ;
+    owl:equivalentClass dm:OperationalState ;
+    owl:sameAs dm:OperationalState .
+
+dm:ThermalGridConnection a owl:Class ;
+    rdfs:subClassOf _:n99f6e98aa6ff40d8842e44a1b7d73aa8b13,
+        dm:ThermalGridConnection,
+        owl:Thing ;
+    owl:equivalentClass dm:ThermalGridConnection ;
+    owl:sameAs dm:ThermalGridConnection .
+
+dm:ThermalZoneState a owl:Class ;
+    rdfs:subClassOf _:n99f6e98aa6ff40d8842e44a1b7d73aa8b14,
+        dm:ThermalZoneState,
+        owl:Thing ;
+    owl:equivalentClass dm:ThermalZoneState ;
+    owl:sameAs dm:ThermalZoneState .
+
+() owl:sameAs () .
+
+s4ener:Storage rdfs:subClassOf _:n99f6e98aa6ff40d8842e44a1b7d73aa8b18 ;
+    owl:sameAs s4ener:Storage .
+
+cim:Point a owl:Class ;
+    rdfs:subClassOf cim:Point,
+        owl:Thing ;
+    owl:equivalentClass cim:Point ;
+    owl:sameAs cim:Point .
+
+dm:ControllabilityLevel a owl:Class ;
+    rdfs:subClassOf dm:ControllabilityLevel,
+        owl:Thing ;
+    owl:equivalentClass dm:ControllabilityLevel ;
+    owl:sameAs dm:ControllabilityLevel .
+
+dm:EffectivelyControllable a owl:Class ;
+    rdfs:subClassOf _:n99f6e98aa6ff40d8842e44a1b7d73aa8b7,
+        _:n99f6e98aa6ff40d8842e44a1b7d73aa8b8,
+        _:n99f6e98aa6ff40d8842e44a1b7d73aa8b9,
+        dm:EffectivelyControllable,
+        owl:Thing,
+        s4ener:Device ;
+    owl:equivalentClass _:n99f6e98aa6ff40d8842e44a1b7d73aa8b7,
+        dm:EffectivelyControllable ;
+    owl:sameAs dm:EffectivelyControllable .
+
+dm:Schedule a owl:Class ;
+    rdfs:subClassOf dm:Schedule,
+        owl:Thing ;
+    owl:equivalentClass dm:Schedule ;
+    owl:sameAs dm:Schedule .
+
+dm:ThermalGrid a owl:Class ;
+    rdfs:subClassOf _:n99f6e98aa6ff40d8842e44a1b7d73aa8b15,
+        dm:ThermalGrid,
+        owl:Thing ;
+    owl:equivalentClass dm:ThermalGrid ;
+    owl:sameAs dm:ThermalGrid .
+
+dm:ThermalMeter a owl:Class ;
+    rdfs:subClassOf dm:ThermalMeter,
+        owl:Thing,
+        saref:Sensor ;
+    owl:equivalentClass dm:ThermalMeter ;
+    owl:sameAs dm:ThermalMeter .
+
+saref:Sensor owl:sameAs saref:Sensor .
+
+dm:ComfortProfile a owl:Class ;
+    rdfs:subClassOf _:n99f6e98aa6ff40d8842e44a1b7d73aa8b6,
+        dm:ComfortProfile,
+        owl:Thing ;
+    owl:equivalentClass dm:ComfortProfile ;
+    owl:sameAs dm:ComfortProfile .
+
+dm:ManualOverride a owl:Class ;
+    rdfs:subClassOf dm:ManualOverride,
+        owl:Thing ;
+    owl:equivalentClass dm:ManualOverride ;
+    owl:sameAs dm:ManualOverride .
+
+owl:Restriction owl:sameAs owl:Restriction .
+
+owl:AnnotationProperty owl:sameAs owl:AnnotationProperty .
+
+s4bldg:BuildingSpace owl:sameAs s4bldg:BuildingSpace .
+
+cim:TimeSeries a owl:Class ;
+    rdfs:subClassOf cim:TimeSeries,
+        owl:Thing ;
+    owl:equivalentClass cim:TimeSeries ;
+    owl:sameAs cim:TimeSeries .
+
+dm:AccessAddress a owl:Class ;
+    rdfs:subClassOf dm:AccessAddress,
+        owl:Thing ;
+    owl:equivalentClass dm:AccessAddress ;
+    owl:sameAs dm:AccessAddress .
+
+dm:WeatherForecast a owl:Class ;
+    rdfs:subClassOf dm:WeatherForecast,
+        owl:Thing ;
+    owl:equivalentClass dm:WeatherForecast ;
+    owl:sameAs dm:WeatherForecast .
+
+saref:Device rdfs:subClassOf _:n99f6e98aa6ff40d8842e44a1b7d73aa8b1,
+        owl:Thing ;
+    owl:sameAs saref:Device .
+
+saref:State owl:sameAs saref:State .
+
+cim:ConductingEquipment a owl:Class ;
+    rdfs:subClassOf cim:ConductingEquipment,
+        cim:Equipment,
+        cim:PowerSystemResource,
+        owl:Thing ;
+    owl:equivalentClass cim:ConductingEquipment ;
+    owl:sameAs cim:ConductingEquipment .
+
+cim:Equipment a owl:Class ;
+    rdfs:subClassOf cim:Equipment,
+        cim:PowerSystemResource,
+        owl:Thing ;
+    owl:equivalentClass cim:Equipment ;
+    owl:sameAs cim:Equipment .
+
+cim:PowerSystemResource a owl:Class ;
+    rdfs:subClassOf cim:PowerSystemResource,
+        owl:Thing ;
+    owl:equivalentClass cim:PowerSystemResource ;
+    owl:sameAs cim:PowerSystemResource .
+
+s4ener:Device owl:sameAs s4ener:Device .
+
+owl:ObjectProperty owl:sameAs owl:ObjectProperty .
+
+xsd:float a rdfs:Datatype ;
+    owl:sameAs xsd:float .
+
+rdfs:Datatype owl:sameAs rdfs:Datatype .
+
+owl:DatatypeProperty owl:sameAs owl:DatatypeProperty .
+
+owl:NamedIndividual owl:sameAs owl:NamedIndividual .
+
+owl:Class owl:sameAs owl:Class .
+
+owl:Thing a owl:Class ;
+    rdfs:subClassOf owl:Thing ;
+    owl:equivalentClass owl:Thing ;
+    owl:sameAs owl:Thing .
+
+[] a err:ErrorMessage ;
+    err:error "Lexical value of the literal '0.0' does not match its datatype (http://www.w3.org/2001/XMLSchema#float)" .
+
+_:n99f6e98aa6ff40d8842e44a1b7d73aa8b24 a owl:AllDisjointClasses ;
+    owl:members _:n99f6e98aa6ff40d8842e44a1b7d73aa8b25 ;
+    owl:sameAs _:n99f6e98aa6ff40d8842e44a1b7d73aa8b24 .
+
+_:n99f6e98aa6ff40d8842e44a1b7d73aa8b28 a owl:AllDifferent ;
+    owl:distinctMembers _:n99f6e98aa6ff40d8842e44a1b7d73aa8b29 ;
+    owl:sameAs _:n99f6e98aa6ff40d8842e44a1b7d73aa8b28 .
+
+_:n99f6e98aa6ff40d8842e44a1b7d73aa8b10 rdf:first s4ener:Device ;
+    rdf:rest _:n99f6e98aa6ff40d8842e44a1b7d73aa8b11 ;
+    owl:sameAs _:n99f6e98aa6ff40d8842e44a1b7d73aa8b10 .
+
+_:n99f6e98aa6ff40d8842e44a1b7d73aa8b11 rdf:first _:n99f6e98aa6ff40d8842e44a1b7d73aa8b8 ;
+    rdf:rest _:n99f6e98aa6ff40d8842e44a1b7d73aa8b12 ;
+    owl:sameAs _:n99f6e98aa6ff40d8842e44a1b7d73aa8b11 .
+
+_:n99f6e98aa6ff40d8842e44a1b7d73aa8b12 rdf:first _:n99f6e98aa6ff40d8842e44a1b7d73aa8b9 ;
+    rdf:rest () ;
+    owl:sameAs _:n99f6e98aa6ff40d8842e44a1b7d73aa8b12 .
+
+_:n99f6e98aa6ff40d8842e44a1b7d73aa8b16 rdf:first dm:HeatPump ;
+    rdf:rest _:n99f6e98aa6ff40d8842e44a1b7d73aa8b17 ;
+    owl:sameAs _:n99f6e98aa6ff40d8842e44a1b7d73aa8b16 .
+
+_:n99f6e98aa6ff40d8842e44a1b7d73aa8b17 rdf:first dm:ThermalGrid ;
+    rdf:rest () ;
+    owl:sameAs _:n99f6e98aa6ff40d8842e44a1b7d73aa8b17 .
+
+_:n99f6e98aa6ff40d8842e44a1b7d73aa8b19 a rdfs:Datatype ;
+    owl:onDatatype xsd:float ;
+    owl:sameAs _:n99f6e98aa6ff40d8842e44a1b7d73aa8b19 ;
+    owl:withRestrictions _:n99f6e98aa6ff40d8842e44a1b7d73aa8b22 .
+
+_:n99f6e98aa6ff40d8842e44a1b7d73aa8b2 rdf:first foaf:Agent ;
+    rdf:rest _:n99f6e98aa6ff40d8842e44a1b7d73aa8b3 ;
+    owl:sameAs _:n99f6e98aa6ff40d8842e44a1b7d73aa8b2 .
+
+_:n99f6e98aa6ff40d8842e44a1b7d73aa8b20 xsd:minInclusive "0.0"^^xsd:float ;
+    owl:sameAs _:n99f6e98aa6ff40d8842e44a1b7d73aa8b20 .
+
+_:n99f6e98aa6ff40d8842e44a1b7d73aa8b21 xsd:maxInclusive "100.0"^^xsd:float ;
+    owl:sameAs _:n99f6e98aa6ff40d8842e44a1b7d73aa8b21 .
+
+_:n99f6e98aa6ff40d8842e44a1b7d73aa8b22 rdf:first _:n99f6e98aa6ff40d8842e44a1b7d73aa8b20 ;
+    rdf:rest _:n99f6e98aa6ff40d8842e44a1b7d73aa8b23 ;
+    owl:sameAs _:n99f6e98aa6ff40d8842e44a1b7d73aa8b22 .
+
+_:n99f6e98aa6ff40d8842e44a1b7d73aa8b23 rdf:first _:n99f6e98aa6ff40d8842e44a1b7d73aa8b21 ;
+    rdf:rest () ;
+    owl:sameAs _:n99f6e98aa6ff40d8842e44a1b7d73aa8b23 .
+
+_:n99f6e98aa6ff40d8842e44a1b7d73aa8b25 rdf:first dm:CarbonIntensityForecast ;
+    rdf:rest _:n99f6e98aa6ff40d8842e44a1b7d73aa8b26 ;
+    owl:sameAs _:n99f6e98aa6ff40d8842e44a1b7d73aa8b25 .
+
+_:n99f6e98aa6ff40d8842e44a1b7d73aa8b26 rdf:first dm:GenerationForecast ;
+    rdf:rest _:n99f6e98aa6ff40d8842e44a1b7d73aa8b27 ;
+    owl:sameAs _:n99f6e98aa6ff40d8842e44a1b7d73aa8b26 .
+
+_:n99f6e98aa6ff40d8842e44a1b7d73aa8b27 rdf:first dm:LoadForecast ;
+    rdf:rest () ;
+    owl:sameAs _:n99f6e98aa6ff40d8842e44a1b7d73aa8b27 .
+
+_:n99f6e98aa6ff40d8842e44a1b7d73aa8b29 rdf:first dm:Level1_Unpredictable ;
+    rdf:rest _:n99f6e98aa6ff40d8842e44a1b7d73aa8b30 ;
+    owl:sameAs _:n99f6e98aa6ff40d8842e44a1b7d73aa8b29 .
+
+_:n99f6e98aa6ff40d8842e44a1b7d73aa8b3 rdf:first saref:Device ;
+    rdf:rest () ;
+    owl:sameAs _:n99f6e98aa6ff40d8842e44a1b7d73aa8b3 .
+
+_:n99f6e98aa6ff40d8842e44a1b7d73aa8b30 rdf:first dm:Level2_PredictableNotControllable ;
+    rdf:rest _:n99f6e98aa6ff40d8842e44a1b7d73aa8b31 ;
+    owl:sameAs _:n99f6e98aa6ff40d8842e44a1b7d73aa8b30 .
+
+_:n99f6e98aa6ff40d8842e44a1b7d73aa8b31 rdf:first dm:Level3_Controllable ;
+    rdf:rest () ;
+    owl:sameAs _:n99f6e98aa6ff40d8842e44a1b7d73aa8b31 .
+
+_:n99f6e98aa6ff40d8842e44a1b7d73aa8b4 a owl:Restriction ;
+    owl:onClass cim:UsagePoint ;
+    owl:onProperty cim:Meter.UsagePoint ;
+    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+    owl:sameAs _:n99f6e98aa6ff40d8842e44a1b7d73aa8b4 .
+
+_:n99f6e98aa6ff40d8842e44a1b7d73aa8b5 a owl:Restriction ;
+    rdfs:subClassOf _:n99f6e98aa6ff40d8842e44a1b7d73aa8b5 ;
+    owl:equivalentClass _:n99f6e98aa6ff40d8842e44a1b7d73aa8b5 ;
+    owl:onProperty cim:Terminal.ConductingEquipment ;
+    owl:sameAs _:n99f6e98aa6ff40d8842e44a1b7d73aa8b5 ;
+    owl:someValuesFrom cim:ConductingEquipment .
+
+_:n99f6e98aa6ff40d8842e44a1b7d73aa8b13 a owl:Restriction ;
+    rdfs:subClassOf _:n99f6e98aa6ff40d8842e44a1b7d73aa8b13 ;
+    owl:equivalentClass _:n99f6e98aa6ff40d8842e44a1b7d73aa8b13 ;
+    owl:onProperty dm:connectsTo ;
+    owl:sameAs _:n99f6e98aa6ff40d8842e44a1b7d73aa8b13 ;
+    owl:someValuesFrom dm:ThermalGrid .
+
+_:n99f6e98aa6ff40d8842e44a1b7d73aa8b14 a owl:Restriction ;
+    rdfs:subClassOf _:n99f6e98aa6ff40d8842e44a1b7d73aa8b14 ;
+    owl:equivalentClass _:n99f6e98aa6ff40d8842e44a1b7d73aa8b14 ;
+    owl:onProperty dm:isStateOf ;
+    owl:sameAs _:n99f6e98aa6ff40d8842e44a1b7d73aa8b14 ;
+    owl:someValuesFrom _:n99f6e98aa6ff40d8842e44a1b7d73aa8b15 .
+
+_:n99f6e98aa6ff40d8842e44a1b7d73aa8b6 a owl:Restriction ;
+    owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+    owl:onClass dm:ManualOverride ;
+    owl:onProperty dm:hasManualOverride ;
+    owl:sameAs _:n99f6e98aa6ff40d8842e44a1b7d73aa8b6 .
+
+_:n99f6e98aa6ff40d8842e44a1b7d73aa8b7 a owl:Class ;
+    rdfs:subClassOf _:n99f6e98aa6ff40d8842e44a1b7d73aa8b7,
+        _:n99f6e98aa6ff40d8842e44a1b7d73aa8b8,
+        _:n99f6e98aa6ff40d8842e44a1b7d73aa8b9,
+        dm:EffectivelyControllable,
+        owl:Thing,
+        s4ener:Device ;
+    owl:equivalentClass _:n99f6e98aa6ff40d8842e44a1b7d73aa8b7,
+        dm:EffectivelyControllable ;
+    owl:intersectionOf _:n99f6e98aa6ff40d8842e44a1b7d73aa8b10 ;
+    owl:sameAs _:n99f6e98aa6ff40d8842e44a1b7d73aa8b7 .
+
+_:n99f6e98aa6ff40d8842e44a1b7d73aa8b9 a owl:Restriction ;
+    rdfs:subClassOf _:n99f6e98aa6ff40d8842e44a1b7d73aa8b9 ;
+    owl:equivalentClass _:n99f6e98aa6ff40d8842e44a1b7d73aa8b9 ;
+    owl:hasValue dm:Working ;
+    owl:onProperty dm:hasOperationalState ;
+    owl:sameAs _:n99f6e98aa6ff40d8842e44a1b7d73aa8b9 .
+
+_:n99f6e98aa6ff40d8842e44a1b7d73aa8b18 a owl:Restriction ;
+    rdfs:subClassOf _:n99f6e98aa6ff40d8842e44a1b7d73aa8b18 ;
+    owl:equivalentClass _:n99f6e98aa6ff40d8842e44a1b7d73aa8b18 ;
+    owl:onProperty dm:hasStateOfHealth ;
+    owl:sameAs _:n99f6e98aa6ff40d8842e44a1b7d73aa8b18 ;
+    owl:someValuesFrom _:n99f6e98aa6ff40d8842e44a1b7d73aa8b19 .
+
+_:n99f6e98aa6ff40d8842e44a1b7d73aa8b8 a owl:Restriction ;
+    rdfs:subClassOf _:n99f6e98aa6ff40d8842e44a1b7d73aa8b8 ;
+    owl:equivalentClass _:n99f6e98aa6ff40d8842e44a1b7d73aa8b8 ;
+    owl:hasValue dm:Level3_Controllable ;
+    owl:onProperty dm:hasControllabilityLevel ;
+    owl:sameAs _:n99f6e98aa6ff40d8842e44a1b7d73aa8b8 .
+
+_:n99f6e98aa6ff40d8842e44a1b7d73aa8b15 a owl:Class ;
+    rdfs:subClassOf _:n99f6e98aa6ff40d8842e44a1b7d73aa8b15,
+        owl:Thing ;
+    owl:equivalentClass _:n99f6e98aa6ff40d8842e44a1b7d73aa8b15 ;
+    owl:sameAs _:n99f6e98aa6ff40d8842e44a1b7d73aa8b15 ;
+    owl:unionOf _:n99f6e98aa6ff40d8842e44a1b7d73aa8b16 .
+
+_:n99f6e98aa6ff40d8842e44a1b7d73aa8b1 a owl:Class ;
+    rdfs:subClassOf _:n99f6e98aa6ff40d8842e44a1b7d73aa8b1,
+        owl:Thing ;
+    owl:equivalentClass _:n99f6e98aa6ff40d8842e44a1b7d73aa8b1 ;
+    owl:sameAs _:n99f6e98aa6ff40d8842e44a1b7d73aa8b1 ;
+    owl:unionOf _:n99f6e98aa6ff40d8842e44a1b7d73aa8b2 .
+
