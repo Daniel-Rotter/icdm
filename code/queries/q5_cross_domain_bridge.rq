@@ -1,0 +1,9 @@
+# Q5: Interoperability check, CIM-side and SAREF-side representations of
+# the same physical asset actually bridged.
+PREFIX dm: <http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#>
+PREFIX saref: <https://saref.etsi.org/core/>
+PREFIX cim: <http://www.semanticweb.org/rotter/interoperable-communication-data-model_cim#>
+
+SELECT ?cimDevice ?sarefDevice WHERE {
+    ?cimDevice dm:correspondsToDevice ?sarefDevice .
+}

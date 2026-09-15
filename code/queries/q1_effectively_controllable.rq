@@ -1,0 +1,9 @@
+# Q1: The actual decision-variable set for this optimisation cycle
+# (Section~\ref{subsec:optimisation_implications}).
+PREFIX dm: <http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#>
+PREFIX saref: <https://saref.etsi.org/core/>
+PREFIX cim: <http://www.semanticweb.org/rotter/interoperable-communication-data-model_cim#>
+
+SELECT ?device WHERE {
+    ?device a dm:EffectivelyControllable .
+}

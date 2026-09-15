@@ -1,0 +1,16 @@
+# Q2: Mandatory setpoint plus optional PowerProfile constraints for each
+# controllable device (Section~\ref{subsec:dm_device}).
+PREFIX dm: <http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#>
+PREFIX saref: <https://saref.etsi.org/core/>
+PREFIX cim: <http://www.semanticweb.org/rotter/interoperable-communication-data-model_cim#>
+
+SELECT ?device ?setpoint ?minPower ?minRunTime ?rampingTime WHERE {
+    ?device a dm:EffectivelyControllable ;
+            dm:hasSetpoint ?setpoint .
+    OPTIONAL {
+        ?device saref:hasProfile ?profile .
+        ?profile dm:hasMinimumPower ?minPower ;
+                 dm:hasMinimumRunTime ?minRunTime ;
+                 dm:hasRampingTime ?rampingTime .
+    }
+}

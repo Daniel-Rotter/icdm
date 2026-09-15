@@ -1,0 +1,11 @@
+# Q3: Level-3-nominal devices excluded from this cycle's decision-variable
+# set, and why (Section~\ref{subsec:dm_device}).
+PREFIX dm: <http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#>
+PREFIX saref: <https://saref.etsi.org/core/>
+PREFIX cim: <http://www.semanticweb.org/rotter/interoperable-communication-data-model_cim#>
+
+SELECT ?device ?state WHERE {
+    ?device dm:hasControllabilityLevel dm:Level3_Controllable ;
+            dm:hasOperationalState ?state .
+    FILTER NOT EXISTS { ?device a dm:EffectivelyControllable . }
+}

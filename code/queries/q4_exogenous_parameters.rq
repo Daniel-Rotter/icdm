@@ -1,0 +1,12 @@
+# Q4: Required grid-side/environmental inputs actually populated before
+# the solver would run.
+PREFIX dm: <http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#>
+PREFIX saref: <https://saref.etsi.org/core/>
+PREFIX cim: <http://www.semanticweb.org/rotter/interoperable-communication-data-model_cim#>
+
+SELECT ?temperature ?solarIrradiance ?forecastTimestamp WHERE {
+    ?forecast a dm:WeatherForecast ;
+        dm:hasTemperature ?temperature ;
+        dm:hasSolarIrradiance ?solarIrradiance ;
+        dm:hasForecastTimestamp ?forecastTimestamp .
+}

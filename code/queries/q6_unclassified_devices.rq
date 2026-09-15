@@ -1,0 +1,11 @@
+# Q6: Devices with control-relevant data present but no controllability
+# classification at all, invisible to Q1 despite having real constraint
+# data ready to use.
+PREFIX dm: <http://www.semanticweb.org/rotter/interoperable-communication-data-model_dm#>
+PREFIX saref: <https://saref.etsi.org/core/>
+PREFIX cim: <http://www.semanticweb.org/rotter/interoperable-communication-data-model_cim#>
+
+SELECT ?device WHERE {
+    ?device saref:hasProfile ?profile .
+    FILTER NOT EXISTS { ?device dm:hasControllabilityLevel ?level }
+}
