@@ -17,3 +17,6 @@ abstract: >-
   This repository contains the artefacts accompanying the Master's thesis,
   including the thesis PDF, LaTeX source files, software implementations,
   datasets, figures, and supplementary documentation.
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.24506671
