@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: >-
+  If you use or reference any of the materials in this repository,
+  please cite the archived thesis artefacts using the DOI below.
+title: >-
+  Design of an interoperable communication data model for 
+  higher-level control systems in energy management
+authors:
+  - family-names: "Rotter"
+    given-names: "Daniel"
+version: 1.0.0
+date-released: 2026-11-24
+type: other
+repository-code: "https://github.com/Daniel-Rotter/icdm"
+license: MIT
+abstract: >-
+  This repository contains the artefacts accompanying the Master's thesis,
+  including the thesis PDF, LaTeX source files, software implementations,
+  datasets, figures, and supplementary documentation.
