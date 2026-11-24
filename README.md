@@ -10,7 +10,7 @@ are licensed under the Creative Commons Attribution 4.0
 International License (CC BY 4.0).
 
 This includes the thesis document, supplementary documentation,
-original figures, and other original research artefacts.
+original code, and other research artefacts.
 
 Third-party materials and datasets may be subject to separate
 copyright and licensing conditions.
