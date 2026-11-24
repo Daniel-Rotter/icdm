@@ -14,3 +14,5 @@ original code, and other research artefacts.
 
 Third-party materials and datasets may be subject to separate
 copyright and licensing conditions.
+
+[![DOI](https://zenodo.org/badge/1357128320.svg)](https://doi.org/10.5281/zenodo.24506671)
